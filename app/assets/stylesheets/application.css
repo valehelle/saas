@@ -194,7 +194,6 @@
  }
  
  .sidebar-nav > .sidebar-brand {
-     height: 65px;
      font-size: 20px;
      line-height: 44px;
  }
@@ -208,6 +207,12 @@
      background-color: #222;
      box-shadow: none;
  }
+ .dropdown-menu > li > a { 
+     color: #dddddd !important;
+ }
+  .dropdown-menu > li > a:hover { 
+     color: white !important;
+ }
  
  /*-------------------------------*/
  /*       Hamburger-Cross         */
@@ -215,6 +220,13 @@
  #sidebar-wrapper-bootstrap{
      background-color: black;
      color: white;
+     z-index: 100;
+     position: fixed;
+ }
+  #sidebar-wrapper-dummy{
+     background-color: black;
+     color: white;
+     visibility: hidden;
  }
  .hamburger {
    position: absolute;
@@ -295,7 +307,8 @@
  .hamburger.is-open .hamb-top,
  .hamburger.is-open .hamb-bottom {
    top: 50%;
-   margin-top: -2px;  
+   margin-top: -2px;
+   background-color: white;  
  }
  .hamburger.is-open .hamb-top { 
    -webkit-transform: rotate(45deg);
@@ -340,4 +353,10 @@
      bottom: 0;
      background-color: rgba(250,250,250,.8);
      z-index: 1;
+ }
+ .edu-nav-logo:hover,
+ .edu-nav-logo:visited,
+ .edu-nav-logo{
+     text-decoration: none !important;
+     color: white;
  }
