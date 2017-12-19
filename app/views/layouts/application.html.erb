@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+  <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
   <body id = "body">
@@ -19,7 +20,7 @@
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
-            <li class = "sidebar-brand"><img class="img-responsive" src="https://eduvoc.weebly.com/uploads/5/5/8/1/55815063/background-images/1148417702.jpg" alt="Cinque Terre"> </li>
+            <li class = "sidebar-brand"><img class="img-responsive" src="https://valehelle.github.io/landing_support/eduvoc_mini.jpg" alt="Cinque Terre"> </li>
             <li class = "<%= 'active' if current_page? root_path %>"><%= link_to 'Home', root_path %></li>
             <li class = "<%= 'active' if current_page? about_path %>" ><%= link_to 'About', about_path %></li>
             <li class="dropdown">

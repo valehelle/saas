@@ -21,6 +21,27 @@
     color:white;
     padding-bottom: 50px;
 }
+.how-wrapper{
+    background: #ffab4a;
+    background: -webkit-linear-gradient(left, #f06e47, #ffab4a);
+    background: -moz-linear-gradient(left, #f06e47, #ffab4a);
+    background: -o-linear-gradient(left, #f06e47, #ffab4a);
+    background: linear-gradient(to right, #f06e47, #ffab4a);
+    padding-right: 0;
+    color:white;
+}
+.why-wrapper{
+    background: #eb5a46;
+    color:white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.what-wrapper{
+    padding-top: 50px;
+    background: #7b8fd1;
+    color:white;
+    padding-bottom: 50px;
+}
 #main-wrapper{
     text-align: center;
 }
