@@ -359,4 +359,12 @@
  .edu-nav-logo{
      text-decoration: none !important;
      color: white;
+     float: right;
+     margin-bottom: 10px;
+ }
+ #content{
+     min-height: 100vh;
+ }
+ #footer{
+    text-align: center;
  }
