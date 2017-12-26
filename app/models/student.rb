@@ -5,4 +5,7 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :enrolls
   has_many :subject, through: :enrolls
+  def to_s
+    self.email
+  end
 end

@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'carrierwave'
 gem 'activeadmin'
+gem 'arctic_admin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

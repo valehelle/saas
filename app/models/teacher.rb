@@ -4,4 +4,7 @@ class Teacher < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :subjects
+  def to_s
+    self.email
+  end
 end

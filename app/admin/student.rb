@@ -12,9 +12,7 @@ ActiveAdmin.register Student do
       end
     
       filter :email
-      filter :current_sign_in_at
-      filter :sign_in_count
-      filter :created_at
+      filter :subject_id, :collection => proc { Subject.all }, :as => :select
     
       form do |f|
         f.inputs do
