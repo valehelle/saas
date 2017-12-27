@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :students
-  devise_for :teachers
   root to: 'front#index'
+  get '/dashboard/', to: 'dashboard#index'
   get '/about/', to: 'front#about'
   get '/gallery/', to: 'front#gallery'
   get '/contact/', to: 'front#contact'

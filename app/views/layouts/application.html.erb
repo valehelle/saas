@@ -34,8 +34,8 @@
             <li class = "<%= 'active' if current_page? gallery_path %>" ><%= link_to 'Gallery', gallery_path %></li>
             <li class = "<%= 'active' if current_page? contact_path %>" ><%= link_to 'Contact', contact_path %></li>
             <li class = "<%= 'active' if current_page? faq_path %>" ><%= link_to 'Faq', faq_path %></li>
-            <li class = "<%= 'active' if current_page? contact_path %>" ><%= link_to 'Student Login', new_student_session_path %></li>
-            <li class = "<%= 'active' if current_page? faq_path %>" ><%= link_to 'Teacher Login', new_teacher_session_path %></li>
+          
+            <%= link_to('Logout', destroy_user_session_path, method: :delete) %> 
         </ul>
     </nav>
     <!-- /#sidebar-wrapper -->

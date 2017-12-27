@@ -1,5 +1,5 @@
 class Enroll < ApplicationRecord
-    belongs_to :student
+    belongs_to :user
     belongs_to :subject
     def to_s
         if !self.subject.nil?
