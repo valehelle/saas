@@ -1,1 +1,13 @@
 INDEX DAHVBOAERD
+Dashboard
+<% if current_user.info.is_teacher %>
+TEACHER
+<% else %>
+STUDENT
+<% end %>
+
+<% current_user.subjects.each do |subject|%>
+<tr>
+   <h4><%= subject.title %></h4>
+</tr>
+<% end %>

@@ -5,6 +5,7 @@ $ ->
  minmax = true;
  $('#filters_sidebar_section').click (e) ->
     minmax = false
+    true
  $('#sidebar').click (e) ->
     position = $(this).position()
     width = $(this).width()

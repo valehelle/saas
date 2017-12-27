@@ -21,7 +21,8 @@ ActiveAdmin.register Subject do
     panel 'Students' do
         table_for subject.students do
             column :email
-            column do |p| link_to "View", admin_student_path(p.id) end
+            column do |p| link_to "View", admin_user_path(p.id) 
+            end
         end
     end
   end
@@ -29,7 +30,7 @@ ActiveAdmin.register Subject do
     f.inputs do
         f.input :title
         f.input :teacher
-        f.input :students, :multiple => true, as: :check_boxes, :collection => Student.all.map{ |student|  [student.email, student.id] }
+        f.input :students, :multiple => true, as: :check_boxes, :collection => User.all.map{ |student|  [student.email, student.id] }
     end
    
     f.actions
@@ -38,8 +39,8 @@ ActiveAdmin.register Subject do
   controller do
     def update
         title = params[:subject][:title]
-        teacher_id = params[:subject][:teacher_id]
-        teacher = Teacher.find(teacher_id.to_i)
+        teacher_id = params[:subject][:user_id]
+        teacher = User.find(teacher_id.to_i)
 
         subject = Subject.find(params[:id])
         subject.teacher = teacher
@@ -48,22 +49,22 @@ ActiveAdmin.register Subject do
         students = params[:subject][:student_ids]
         students.shift
         students.each do |student_id|
-            subject.students << Student.find(student_id.to_i)
+            subject.students << User.find(student_id.to_i)
         end
         subject.save!
         redirect_to resource_path(subject)
     end
     def create
         title = params[:subject][:title]
-        teacher_id = params[:subject][:teacher_id]
-        teacher = Teacher.find(teacher_id.to_i)
+        teacher_id = params[:subject][:user_id]
+        teacher = User.find(teacher_id.to_i)
 
         subject = Subject.new(title: title, teacher: teacher)
         
         students = params[:subject][:student_ids]
         students.shift
         students.each do |student_id|
-            subject.students << Student.find(student_id.to_i)
+            subject.students << User.find(student_id.to_i)
         end
         subject.save!
         redirect_to resource_path(subject)

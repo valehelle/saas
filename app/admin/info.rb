@@ -11,5 +11,12 @@ ActiveAdmin.register Info do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+form do |f|
+    f.inputs do
+        f.input :is_teacher
+    end
+   
+    f.actions
+  end
+permit_params :is_teacher
 end
