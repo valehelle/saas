@@ -1,0 +1,7 @@
+NEW ANNOUNCEMENT
+<%= form_for @announcement, url: {action: "create"} do |f| %>
+<%= f.text_field :title %>
+<%= f.text_area :content %>
+<%= f.submit "Create" %>
+<%= select("subject", "subject_id", current_user.teaches.all.collect {|p| [ p.title, p.id ] }, { include_blank: false }) %>
+<% end %>

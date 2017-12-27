@@ -5,7 +5,16 @@ TEACHER
 <% else %>
 STUDENT
 <% end %>
+ANNOUNCEMENT
+<% @announcement.each do |announcement|%>
+<tr>
+   <h4><%= announcement.title %></h4>
+   <h6><%= announcement.content %></h6>
+   <h6><%= announcement.subject.title %></h6>
+</tr>
+<% end %>
 
+SUBJECT
 <% current_user.subjects.each do |subject|%>
 <tr>
    <h4><%= subject.title %></h4>

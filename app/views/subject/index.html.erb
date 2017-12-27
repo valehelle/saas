@@ -1,0 +1,5 @@
+<% current_user.subjects.each do |subject|%>
+<tr>
+   <h4><%= link_to subject.title, subject_path(subject)  %></h4>
+</tr>
+<% end %>
