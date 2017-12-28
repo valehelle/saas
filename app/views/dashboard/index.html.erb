@@ -1,22 +1,32 @@
-INDEX DAHVBOAERD
-Dashboard
-<% if current_user.info.is_teacher %>
-TEACHER
-<% else %>
-STUDENT
-<% end %>
-ANNOUNCEMENT
-<% @announcement.each do |announcement|%>
-<tr>
-   <h1><%= announcement.title %></h1>
-   <h1><%= announcement.content %></h1>
-   <h6><%= announcement.subject.title %></h6>
-</tr>
-<% end %>
+<div class = "row">
+        <div class="col-md-12">
+<div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Announcements</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body col-xs-12">
+              <ul class="products-list product-list-in-box">
+                <% @announcements.each do |a|%>
+  
+                <li class="item col-xs-12">
+                  <div class="product-info">
+                    <a href="javascript:void(0)" class="product-title"><%= a.title %></a>
+                    <h6 class="product-description"><%= a.content %></h6>
+                    <h6 class="label label-warning pull-right"><%= a.subject.title %></h6>
+                  </div>
+                </li>
+                <% end %>
 
-SUBJECT
-<% current_user.subjects.each do |subject|%>
-<tr>
-   <h1><%= subject.title %></h1>
-</tr>
-<% end %>
+                <!-- /.item -->
+              </ul>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+              <a href="javascript:void(0)" class="uppercase">View All Products</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+</div>

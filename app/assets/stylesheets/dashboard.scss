@@ -1,3 +1,81 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.box {
+	position: relative;
+	border-radius: 3px;
+	background: #ffffff;
+	border-top: 3px solid #d2d6de;
+	margin-bottom: 20px;
+	width: 100%;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.box-header.with-border {
+	border-bottom: 1px solid #f4f4f4;
+}
+.box-header {
+	color: #444;
+	display: block;
+	padding: 10px;
+	position: relative;
+}
+.box-body {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	padding: 10px;
+}
+.box-footer {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-top: 1px solid #f4f4f4;
+	padding: 10px;
+	background-color: #fff;
+}
+.box.box-success {
+	border-top-color: #00a65a;
+}
+#backend-content{
+    margin-top: 90px;
+}
+.products-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.products-list > .item {
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	padding: 10px 0;
+	background: #fff;
+}
+.product-list-in-box > .item {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0;
+	border-bottom: 1px solid #f4f4f4;
+}
+
+
+.products-list .product-info {
+    text-align: left;
+}
+.products-list .product-title {
+	font-weight: 600;
+}
+
+
+a {
+	color: #3c8dbc;
+}
+a {
+	color: #337ab7;
+	text-decoration: none;
+}
+a {
+	background-color: transparent;
+}

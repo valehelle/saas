@@ -43,19 +43,18 @@
       
                       <nav class="navbar-backend navbar-default col-xs-12">
                           <div class="container-fluid">
-      
                               <div class="navbar-header col-xs-12">
                                   <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                       <i class="glyphicon glyphicon-menu-hamburger"></i>
-                                      
                                   </button>
                                   <h3 class = "narbar-title">Eduvoc</h3>
                               </div> 
-                              
-                          
                           </div>
                       </nav>
-                      <%= yield %>
+                      <div id = "backend-content" class = "container-fluid">
+                        <%= yield %>
+                        
+                      </div>
                       <div id = "footer">
                           <h5>Copyright Eduvoc 2018</h5>
                         </div>
