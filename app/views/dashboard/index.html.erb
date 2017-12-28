@@ -8,8 +8,8 @@ STUDENT
 ANNOUNCEMENT
 <% @announcement.each do |announcement|%>
 <tr>
-   <h4><%= announcement.title %></h4>
-   <h6><%= announcement.content %></h6>
+   <h1><%= announcement.title %></h1>
+   <h1><%= announcement.content %></h1>
    <h6><%= announcement.subject.title %></h6>
 </tr>
 <% end %>
@@ -17,6 +17,6 @@ ANNOUNCEMENT
 SUBJECT
 <% current_user.subjects.each do |subject|%>
 <tr>
-   <h4><%= subject.title %></h4>
+   <h1><%= subject.title %></h1>
 </tr>
 <% end %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'front#index'
   get '/dashboard/', to: 'dashboard#index'
+  get '/announcements', to: 'announcement#index'
   get '/announcements/new', to: 'announcement#new'
   post '/announcements/', to: 'announcement#create'
   get '/subjects/', to: 'subject#index'

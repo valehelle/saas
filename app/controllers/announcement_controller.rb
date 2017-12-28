@@ -1,4 +1,6 @@
 class AnnouncementController < ApplicationController
+    def index
+    end
     def new
         @announcement = Announcement.new
         @subjects = current_user.teaches
