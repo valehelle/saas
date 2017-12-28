@@ -29,8 +29,8 @@ ActiveAdmin.register Subject do
   form do |f|
     f.inputs do
         f.input :title
-        f.input :teacher
-        f.input :students, :multiple => true, as: :check_boxes, :collection => User.all.map{ |student|  [student.email, student.id] }
+        f.input :teacher, as: :select, :collection => Info.where(is_teacher: true).map{ |info|  [info.user.email, info.user.id] }, include_blank: false, include_hidden: false
+        f.input :students, :multiple => true, as: :check_boxes, :collection => Info.where(is_teacher: false).map{ |info|  [info.user.email, info.user.id] }
     end
    
     f.actions
