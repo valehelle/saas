@@ -1,6 +1,6 @@
 <div class = "row">
-        <div class="col-md-12">
-<div class="box box-success">
+        <div class="col-xs-12 col-md-6 col-md-push-3">
+<div class="box box-success col-xs-12">
             <div class="box-header with-border">
               <h3 class="box-title">Announcements</h3>
             </div>
@@ -11,9 +11,11 @@
   
                 <li class="item col-xs-12">
                   <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title"><%= a.title %></a>
-                    <h6 class="product-description"><%= a.content %></h6>
-                    <h6 class="label label-warning pull-right"><%= a.subject.title %></h6>
+                      <%= link_to a.title, announcement_path(a), :class => 'product-title' %>
+                    <br>
+                    <h6 class="label label-default "><%= a.created_at.to_date %></h6>
+                    <h6 class="label label-warning "><%= a.subject.title %></h6>
+                    
                   </div>
                 </li>
                 <% end %>
@@ -23,10 +25,42 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">View All Products</a>
+              <%= link_to 'View more', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
             </div>
             <!-- /.box-footer -->
           </div>
+        
           <!-- /.box -->
         </div>
+
+        <div class="col-xs-12 col-md-6 col-md-push-3">
+            <div class="box box-success col-xs-12">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Subjects</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body col-xs-12">
+                          <ul class="products-list product-list-in-box">
+                            <% current_user.subjects.each do |s|%>
+              
+                            <li class="item col-xs-12">
+                              <div class="product-info">
+                                  <%= link_to s.title, subject_path(s), :class => 'product-title' %>
+                                <br>
+                              </div>
+                            </li>
+                            <% end %>
+            
+                            <!-- /.item -->
+                          </ul>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer text-center">
+                          <%= link_to 'View more', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
+                        </div>
+                        <!-- /.box-footer -->
+                      </div>
+                    
+                      <!-- /.box -->
+                    </div>
 </div>

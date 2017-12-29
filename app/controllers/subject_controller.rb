@@ -6,5 +6,7 @@ class SubjectController < ApplicationController
        
     end
     def show
+        @subject = Subject.find(params[:id])
+        @announcements = Announcement.where(subject: @subject.id).last(5).reverse
     end
 end

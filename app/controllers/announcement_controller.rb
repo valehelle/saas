@@ -3,6 +3,9 @@ class AnnouncementController < ApplicationController
     layout "backend_application"
     protect_from_forgery
     def index
+        @announcements = Announcement.paginate(:page => params[:page], :per_page => 10)
+    end
+    def show
     end
     def new
         @announcement = Announcement.new

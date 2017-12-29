@@ -33,6 +33,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'activeadmin'
 gem 'arctic_admin'
+gem 'will_paginate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

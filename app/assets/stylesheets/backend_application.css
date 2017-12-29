@@ -153,6 +153,7 @@ a.article, a.article:hover {
     position: absolute;
     top: 0;
     right: 0;
+    background: #fafafa;
 }
 #content.active {
     width: 100%;
@@ -164,6 +165,9 @@ a.article, a.article:hover {
 #sidebarCollapse{
     float: left;
 
+}
+.content-active{
+	width: 200%;
 }
 
 /* ---------------------------------------------------

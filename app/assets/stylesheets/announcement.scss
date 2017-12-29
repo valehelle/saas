@@ -1,3 +1,28 @@
-// Place all the styles related to the Announcement controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.pagination {
+    font-size: 12px;
+}
+
+.pagination > * {
+    margin-right: 0.1em;
+    padding: 0.3em 0.4em;
+}
+
+.pagination a:hover {
+    background:#7386d5 none repeat scroll 0 0;
+    text-shadow: 1px 1px 1px #7386d5;
+    color:white;
+}
+
+.pagination a:active {
+    text-shadow: none;
+}
+
+.pagination .current {
+    background: #7386d5 none repeat scroll 0 0;
+    color: white;
+    text-shadow: 1px 1px 1px #7386d5;
+}
+
+.pagination .disabled {
+    color: #C0C0C0;
+}

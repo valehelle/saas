@@ -1,0 +1,27 @@
+
+<div class = "row">
+            <div class="col-xs-12 col-md-6 col-md-push-3">
+        <div class="box box-success col-xs-12">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Upload</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body col-xs-12">
+                      <ul class="products-list product-list-in-box">
+                        <%= form_for @documents, :html => {:multipart => true} do |f| %>
+                            <%= f.file_field :doc, :class => 'upload-document' %>
+
+                        <!-- /.item -->
+                      </ul>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <%= f.submit "Upload",:class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
+                      <% end %>
+                    </div>
+                    <!-- /.box-footer -->
+                  </div>
+                
+                  <!-- /.box -->
+                </div>
+        </div>
