@@ -166,9 +166,7 @@ a.article, a.article:hover {
     float: left;
 
 }
-.content-active{
-	width: 200%;
-}
+
 
 /* ---------------------------------------------------
     MEDIAQUERIES
@@ -176,15 +174,13 @@ a.article, a.article:hover {
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
+        margin-top: 77px;
     }
     #sidebar.active {
         margin-left: 0;
     }
     #content {
         width: 100%;
-    }
-    #content.active {
-        width: calc(100% - 250px);
     }
     #sidebarCollapse span {
         display: none;
