@@ -28,7 +28,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer text-center">
-              <%= link_to 'View all', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
+              <%= link_to 'View all', subject_announcements_path(@subject), :class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
             </div>
             <!-- /.box-footer -->
           </div>
@@ -50,7 +50,7 @@
                                          <%= link_to s.doc.file.filename, download_document_path(@subject.id,s.id), :class => 'product-title' %>
                                           <br>
                                           <h6 class="label label-default "><%= s.created_at.to_date %></h6>
-                                          <% if current_user.info.is_teacher %>
+                                          <% if current_user.info.is_teacher && @subject.user_id == current_user.id%>
                                             <%= link_to "Delete", delete_document_path(@subject.id,s.id),  method: :delete, data: {confirm: "Are you sure you want to delete this document?"}, :class => 'label label-danger' %>
                                           <% end %>
                                         </div>

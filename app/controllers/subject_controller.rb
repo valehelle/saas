@@ -14,4 +14,8 @@ class SubjectController < ApplicationController
         @subject = Subject.find(params[:id])
         @announcements = Announcement.where(subject: @subject.id).last(5).reverse
     end
+    def announcements
+         @subject = Subject.find(params[:id])
+         @announcements = Announcement.where(subject: @subject.id).paginate(:page => params[:page], :per_page => 10)
+    end
 end

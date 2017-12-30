@@ -6,6 +6,7 @@ class AnnouncementController < ApplicationController
         @announcements = Announcement.paginate(:page => params[:page], :per_page => 10)
     end
     def show
+        @announcement = Announcement.find(params[:id])
     end
     def new
         @announcement = Announcement.new
@@ -18,9 +19,19 @@ class AnnouncementController < ApplicationController
           flash[:notice] = 'Announcement created!'
           redirect_to dashboard_path
         else
-            puts @announcement.errors.messages
           flash[:error] = 'Failed to create announcement!'
           render :new
+        end
+    end
+    def destroy
+        @announcement = Announcement.find(params[:id])
+        if @announcement.delete
+            flash[:notice] = 'Announcement deleted!'
+            redirect_to announcements_path
+            
+        else
+            flash[:error] = 'Failed to delete this announcement!'
+            render :destroy
         end
     end
     private

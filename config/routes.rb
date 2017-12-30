@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: 'front#index'
-
+  get '/subjects/:id/announcements/', to: 'subject#announcements', as: 'subject_announcements'
   get '/subjects/:id/documents/new', to: 'document#new', as: 'new_documents'
   post '/subjects/:id/documents/', to: 'document#create', as: 'documents'
   get '/subjects/:id/documents/:doc_id/download', to: 'document#download_file', as: 'download_document'
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/announcements/new', to: 'announcement#new'
   get '/announcements/:id', to: 'announcement#show', as: 'announcement'
   post '/announcements/', to: 'announcement#create'
+  delete '/announcements/:id', to: 'announcement#destroy', as: 'delete_announcement'
   get '/subjects/', to: 'subject#index'
   get '/subjects/:id', to: 'subject#show', as: 'subject'
   get '/about/', to: 'front#about'
