@@ -8,8 +8,13 @@ class DocumentController < ApplicationController
     def create
         @document = Subject.last.documents.new()
         @document.doc = params['document']['doc']
-        @document.save!
-        redirect_to :subject
+        if @document.save
+          flash[:notice] = 'Document uploaded!'
+          redirect_to :subject
+        else
+          flash[:error] = 'Failed to upload document!'
+          render :new
+        end
     end
     def download_file
         @document = Document.find(params[:doc_id])
