@@ -5,7 +5,19 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Eduvoc"
-
+  if defined?(WillPaginate)
+    module WillPaginate
+      module ActiveRecord
+        module RelationMethods
+          def per(value = nil) per_page(value) end
+          def total_count() count end
+        end
+      end
+      module CollectionMethods
+        alias_method :num_pages, :total_pages
+      end
+    end
+  end
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #

@@ -1,7 +1,41 @@
-NEW ANNOUNCEMENT
-<%= form_for @announcement, url: {action: "create"} do |f| %>
-<%= f.text_field :title %>
-<%= f.text_area :content %>
-<%= f.submit "Create" %>
-<%= select("subject", "subject_id", current_user.teaches.all.collect {|p| [ p.title, p.id ] }, { include_blank: false }) %>
-<% end %>
+
+<div class = "row">
+            <div class="col-xs-12 col-md-8 col-md-push-2">
+        <div class="box box-success col-xs-12">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Create Announcement</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body col-xs-12">
+                      <ul class="products-list product-list-in-box">
+                        <%= form_for @announcement, url: {action: "create"} do |f| %>
+                            <div class="form-group">
+                                <label for="announcement_title">Title:</label>
+                                <%= f.text_field :title, :class => "form-control" %>
+                            </div>
+                            <div class="form-group">
+                                <label for="announcement_content">Content:</label>
+                                <%= f.text_area :content, :class => "form-control" %>
+                            </div>
+                            <div class="form-group">
+                                <label for="announcement_subject">Subject:</label>
+                                <%= select("subject", "subject_id", current_user.teaches.all.collect {|p| [ p.title, p.id ] }, { include_blank: false }, :class => 'form-control') %>
+                            </div>
+                            
+                        <!-- /.item -->
+                      </ul>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                       <% if current_user.info.is_teacher %>
+                        <%= f.submit "Create",:class => 'btn btn-sm btn-success btn-flat col-xs-12 view-more' %>
+                      <% end %>
+                      <% end %>
+                      
+                    </div>
+                    <!-- /.box-footer -->
+                  </div>
+                
+                  <!-- /.box -->
+                </div>
+        </div>

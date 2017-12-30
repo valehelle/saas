@@ -1,5 +1,5 @@
 <div class = "row">
-        <div class="col-xs-12 col-md-6 col-md-push-3">
+        <div class="col-xs-12 col-md-8 col-md-push-2">
 <div class="box box-success col-xs-12">
             <div class="box-header with-border">
               <h3 class="box-title">Announcements</h3>
@@ -14,7 +14,7 @@
                       <%= link_to a.title, announcement_path(a), :class => 'product-title' %>
                     <br>
                     <h6 class="label label-default "><%= a.created_at.to_date %></h6>
-                    <h6 class="label label-warning "><%= a.subject.title %></h6>
+                    <%= link_to a.subject.title, subject_path(a.subject), :class => 'label label-warning' %>
                     
                   </div>
                 </li>
@@ -25,7 +25,17 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer text-center">
-              <%= link_to 'View more', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
+                <div class = "col-xs-12">
+                  <%= link_to 'View all', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 col-md-5 view-more' %>
+                  <% if current_user.info.is_teacher %>
+                      <%= link_to 'Create Announcement', announcements_new_path, :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-5 col-md-push-2 hidden-xs hidden-sm view-more' %>
+                  <% end %>
+                </div>
+              <% if current_user.info.is_teacher %>
+                <div class = "col-xs-12">
+                  <%= link_to 'Create Announcement', announcements_new_path, :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-4 col-md-push-4 hidden-md hidden-lg view-more' %>
+                </div>
+              <% end %>
             </div>
             <!-- /.box-footer -->
           </div>
@@ -33,7 +43,7 @@
           <!-- /.box -->
         </div>
 
-        <div class="col-xs-12 col-md-6 col-md-push-3">
+        <div class="col-xs-12 col-md-8 col-md-push-2">
             <div class="box box-success col-xs-12">
                         <div class="box-header with-border">
                           <h3 class="box-title">Subjects</h3>
@@ -41,7 +51,7 @@
                         <!-- /.box-header -->
                         <div class="box-body col-xs-12">
                           <ul class="products-list product-list-in-box">
-                            <% current_user.subjects.each do |s|%>
+                            <% @subjects.each do |s|%>
               
                             <li class="item col-xs-12">
                               <div class="product-info">
@@ -54,11 +64,6 @@
                             <!-- /.item -->
                           </ul>
                         </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer text-center">
-                          <%= link_to 'View more', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
-                        </div>
-                        <!-- /.box-footer -->
                       </div>
                     
                       <!-- /.box -->

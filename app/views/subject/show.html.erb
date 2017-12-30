@@ -1,6 +1,8 @@
 <div class = "row">
-<h1><%= @subject.title %></h1>
-    <div class="col-xs-12 col-md-6 col-md-push-3">
+  <div class = "col-xs-12 col-md-8 col-md-push-2 subject-title">
+    <h3><%= @subject.title %></h3>
+  </div>
+    <div class="col-xs-12 col-md-8 col-md-push-2">
 <div class="box box-success col-xs-12">
             <div class="box-header with-border">
               <h3 class="box-title">Announcements</h3>
@@ -15,7 +17,8 @@
                       <%= link_to a.title, announcement_path(a), :class => 'product-title' %>
                     <br>
                     <h6 class="label label-default "><%= a.created_at.to_date %></h6>
-                    <h6 class="label label-warning "><%= a.subject.title %></h6>
+                    <%= link_to a.subject.title, subject_path(a.subject), :class => 'label label-warning' %>
+                    
                   </div>
                 </li>
                 <% end %>
@@ -32,7 +35,7 @@
         
           <!-- /.box -->
         </div>
-        <div class="col-xs-12 col-md-6 col-md-push-3">
+        <div class="col-xs-12 col-md-8 col-md-push-2">
             <div class="box box-success col-xs-12">
                         <div class="box-header with-border">
                           <h3 class="box-title">Documents</h3>
@@ -47,7 +50,9 @@
                                          <%= link_to s.doc.file.filename, download_document_path(@subject.id,s.id), :class => 'product-title' %>
                                           <br>
                                           <h6 class="label label-default "><%= s.created_at.to_date %></h6>
-                                          <%= link_to "Delete", delete_document_path(@subject.id,s.id),  method: :delete, data: {confirm: "Are you sure you want to delete this document?"}, :class => 'label label-danger' %>
+                                          <% if current_user.info.is_teacher %>
+                                            <%= link_to "Delete", delete_document_path(@subject.id,s.id),  method: :delete, data: {confirm: "Are you sure you want to delete this document?"}, :class => 'label label-danger' %>
+                                          <% end %>
                                         </div>
                               <div class="product-info">
                                    
@@ -62,7 +67,7 @@
                         <!-- /.box-body -->
                         <% if current_user.info.is_teacher %>
                         <div class="box-footer text-center">
-                          <%= link_to 'Upload document', new_documents_path(@subject), :class => 'btn btn-sm btn-info btn-flat col-xs-12 view-more' %>
+                          <%= link_to 'Upload Document', new_documents_path(@subject), :class => 'btn btn-sm btn-success btn-flat col-xs-12 view-more' %>
                         </div>
                         <% end %>
                         <!-- /.box-footer -->
