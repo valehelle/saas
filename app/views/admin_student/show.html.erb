@@ -1,0 +1,32 @@
+<div class = "row">
+        <div class="col-xs-12 col-md-8 col-md-push-2">
+<div class="box box-success col-xs-12">
+            <div class="box-header with-border">
+              <h3 class="box-title">Student</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body col-xs-12">
+              <ul class="products-list product-list-in-box student-detail-show">
+                   <h5>Name:</h5>
+                   <h5><%= @user.email %></h5>
+                   <h5>Class:</h5>
+                     <% @user.subjects.each do |s| %>
+                        <h5><%= s.title %></h5>
+                    <% end %>
+                <!-- /.item -->
+              </ul>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+                <div class = "col-xs-12">
+                <%= link_to "Edit", edit_admin_student_path(@user), :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-3 col-md-push-2 view-more'%>
+                <%= link_to "Delete", admin_student_path(@user),  method: :delete, data: { confirm: 'Are you sure?' },  :class => 'btn btn-sm btn-danger btn-flat col-xs-12 col-md-3 col-md-push-4 view-more'%>
+                </div>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+        
+          <!-- /.box -->
+        </div>
+
+</div>

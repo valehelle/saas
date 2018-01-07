@@ -1,0 +1,22 @@
+<%= form_for @user, url: {action: "create"} do |f| %>
+  <fieldset>
+    <ol>
+
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.email_field :email, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password %>
+        <%= f.password_field :password, size: 40 %>
+      </li>
+      <li class="required">
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation, size: 40 %>
+      </li>
+    </ol>
+    <p>
+        <%= f.submit "Create Account" %>
+    </p>
+  </fieldset>
+<% end %>

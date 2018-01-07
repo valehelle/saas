@@ -1,0 +1,20 @@
+<%= form_for @user, url: {action: "update"} do |f| %>
+  <fieldset>
+    <ol>
+
+      <li class="required">
+        <%= f.label :email %>
+        <%= f.email_field :email, size: 40 %>
+      </li>
+        <% Subject.all.each do |subject| %>
+            <label>
+                <%= check_box_tag "subject[subject_ids][]" , subject.id, f.object.subjects.include?(subject) %>
+                <%= subject.title %>
+            </label>
+        <% end %>
+    </ol>
+    <p>
+        <%= f.submit "Create Account" %>
+    </p>
+  </fieldset>
+<% end %>

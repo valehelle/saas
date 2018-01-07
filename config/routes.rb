@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   root to: 'front#index'
   get '/subjects/:id/announcements/', to: 'subject#announcements', as: 'subject_announcements'
   get '/subjects/:id/documents/new', to: 'document#new', as: 'new_documents'
@@ -22,5 +20,8 @@ Rails.application.routes.draw do
   get '/faq/', to: 'front#faq'
   get '/service/', to: 'front#service'
   get '/material/', to: 'front#material'
+  resources :admin_user, path: 'admin/admin_user'
+  resources :admin_teacher, path: 'admin/admin_teacher'
+  resources :admin_student, path: 'admin/admin_student'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
