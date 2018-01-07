@@ -1,6 +1,7 @@
 <%= form_for @user, url: {action: "update"} do |f| %>
   <fieldset>
     <ol>
+
       <li class="required">
         <%= f.label :email %>
         <%= f.email_field :email, size: 40 %>

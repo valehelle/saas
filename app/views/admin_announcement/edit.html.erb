@@ -1,0 +1,18 @@
+<%= form_for @announcement, url: {action: "update"} do |f| %>
+  <fieldset>
+    <ol>
+
+      <li class="required">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </li>
+      <li class="required">
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+      </li>
+    </ol>
+    <p>
+        <%= f.submit "Update Announcement" %>
+    </p>
+  </fieldset>
+<% end %>

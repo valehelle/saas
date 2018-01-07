@@ -1,0 +1,19 @@
+<%= form_for @announcement, url: {action: "create"} do |f| %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= f.label :title %>
+        <%= f.text_field :title%>
+      </li>
+      <li class="required">
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+      </li>
+      <%= select_tag 'subject_id', options_for_select(Subject.all.collect{ |u| [u.title, u.id] }), include_blank: "All"%>
+
+    </ol>
+    <p>
+        <%= f.submit "Create Announcement" %>
+    </p>
+  </fieldset>
+<% end %>
