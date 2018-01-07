@@ -1,20 +1,21 @@
-<%= form_for @user, url: {action: "update"} do |f| %>
+<%= form_for @subject, url: {action: "update"} do |f| %>
   <fieldset>
     <ol>
 
       <li class="required">
-        <%= f.label :email %>
-        <%= f.email_field :email, size: 40 %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
       </li>
-        <% Subject.all.each do |subject| %>
+      <%= select_tag 'teacher_id', options_for_select(User.includes(:info).where(infos: {is_teacher: true}).collect{ |u| [u.email, u.id] })%>
+            <% User.includes(:info).where(infos: {is_admin: false, is_teacher: false}).each do |user| %>
             <label>
-                <%= check_box_tag "subject[subject_ids][]" , subject.id, f.object.subjects.include?(subject) %>
-                <%= subject.title %>
+                <%= check_box_tag "user[user_ids][]" , user.id, f.object.students.include?(user) %>
+                <%= user.email %>
             </label>
-        <% end %>
+          <% end %>
     </ol>
     <p>
-        <%= f.submit "Create Account" %>
+        <%= f.submit "Update Subject" %>
     </p>
   </fieldset>
 <% end %>
