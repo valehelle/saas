@@ -3,7 +3,7 @@ class AdminStudentController < ApplicationController
     layout "admin_application"
     protect_from_forgery
     def index
-        @users = User.includes(:info).where(infos: {is_admin: false, is_teacher: false})
+        @users = User.includes(:info).where(infos: {is_admin: false, is_teacher: false}).paginate(:page => params[:page], :per_page => 10)
     end
     def show
         @user = User.find_by_id(params[:id])

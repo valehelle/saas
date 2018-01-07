@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   resources :admin_user, path: 'admin/admin_user'
   resources :admin_teacher, path: 'admin/admin_teacher'
   resources :admin_student, path: 'admin/admin_student'
+  resources :admin_subject, path: 'admin/admin_subject'
+  resources :admin_announcement, path: 'admin/admin_announcement'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
