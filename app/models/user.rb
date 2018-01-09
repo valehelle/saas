@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :subjects, through: :enrolls
   has_many :teaches, class_name: "Subject"
   has_one :info
+  has_one :company
   accepts_nested_attributes_for :info, :allow_destroy => true
   def to_s
     self.email

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106232330) do
+ActiveRecord::Schema.define(version: 20180109073559) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -49,7 +49,16 @@ ActiveRecord::Schema.define(version: 20180106232330) do
     t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id"
     t.index ["subject_id"], name: "index_announcements_on_subject_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -57,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180106232330) do
     t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id"
     t.index ["subject_id"], name: "index_documents_on_subject_id"
   end
 
@@ -73,6 +83,7 @@ ActiveRecord::Schema.define(version: 20180106232330) do
     t.datetime "updated_at", null: false
     t.boolean "is_teacher", default: false
     t.boolean "is_admin", default: false
+    t.integer "company_id"
     t.index ["user_id"], name: "index_infos_on_user_id"
   end
 
@@ -81,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180106232330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "company_id"
   end
 
   create_table "users", force: :cascade do |t|
