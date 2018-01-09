@@ -33,10 +33,12 @@ class AdminStudentController < ApplicationController
         @user = User.find(params[:id])
         if !User.exists?(email: params[:email]) && @user.update_attributes(user_params)
             @user.subjects.delete_all
-
-            subjects = params[:subject][:subject_ids]
-            subjects.each do |subject_id|
-                @user.subjects << Subject.find(subject_id.to_i)
+            
+            if !params[:subject].nil?
+                subjects = params[:subject][:subject_ids]
+                subjects.each do |subject_id|
+                    @user.subjects << Subject.find(subject_id.to_i)
+                end
             end
             if @user.save
                 redirect_to admin_student_path(@user), notice: "Updated User."

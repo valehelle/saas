@@ -13,6 +13,9 @@ class AdminTeacherController < ApplicationController
     end
     def create
         @user = User.new(user_params)
+        # For admin to have its own user without conflict with other admin
+        sanitize_email = get_email(@user.email,current_user.info.company.id)
+        @user.email = sanitize_email
         if @user.save
             @company =  current_user.info.company
             @info= Info.new(is_admin: false, is_teacher: true, user: @user, company: @company)
@@ -43,5 +46,9 @@ class AdminTeacherController < ApplicationController
 
     def user_params
         params.require(:user).permit( :email, :password, :password_confirmation)
+    end
+    def get_email(email,id)
+        e_split = email.split('@')
+        new_email = e_split.first + '$$%' + id.to_s + '@' + e_split.last
     end
 end

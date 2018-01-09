@@ -12,4 +12,16 @@ class User < ApplicationRecord
   def to_s
     self.email
   end
+  def email
+    user =  User.find(self[:id])
+    id = user.info.company.id
+    regex = '$$%' + id.to_s 
+    email = self[:email]
+    e_split = email.split(regex)
+    sanitize_email = self[:email]
+    if e_split.length > 1
+      sanitize_email = e_split.first + e_split.last
+    end
+    sanitize_email
+  end
 end
