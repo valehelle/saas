@@ -14,6 +14,7 @@ class AdminSubjectController < ApplicationController
     def create
         @subject = Subject.new(subject_params)
         @subject.teacher = User.find(params[:teacher_id])
+        @subject.company = current_user.info.company
         if @subject.save
             redirect_to admin_subject_index_path, notice: "Subject succesfully created!" 
         else

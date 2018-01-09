@@ -15,6 +15,7 @@ class AdminUserController < ApplicationController
     def create
         @user = User.new(user_params)
         @user.info.is_admin = true
+        @user.info.company = current_user.info.company
         if @user.save
             redirect_to admin_user_index_path, notice: "Admin succesfully created!" 
         else

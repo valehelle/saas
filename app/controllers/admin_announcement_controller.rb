@@ -16,6 +16,7 @@ class AdminAnnouncementController < ApplicationController
         if !params[:subject_id].empty?
             @announcement.subject = Subject.find(params[:subject_id])
         end
+        @announcement.company = current_user.info.company
         if @announcement.save
             redirect_to admin_announcement_index_path, notice: "Announcement succesfully created!" 
         else
@@ -28,6 +29,7 @@ class AdminAnnouncementController < ApplicationController
     end
     def update
         @announcement = Announcement.find(params[:id])
+
         if @announcement.update_attributes(announcement_params)
             redirect_to admin_announcement_path(@user), notice: "Updated Announcement."
         else

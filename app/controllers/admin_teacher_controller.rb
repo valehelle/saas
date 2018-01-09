@@ -14,7 +14,8 @@ class AdminTeacherController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            @info= Info.new(is_admin: false, is_teacher: true, user: @user)
+            @company =  current_user.info.company
+            @info= Info.new(is_admin: false, is_teacher: true, user: @user, company: @company)
             if @info.save
                 redirect_to admin_user_index_path, notice: "Teacher succesfully created!" 
             else

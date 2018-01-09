@@ -14,7 +14,9 @@ class AdminStudentController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            @info= Info.new(is_admin: false, is_teacher: false, user: @user)
+            @company = current_user.info.company
+            @info= Info.new(is_admin: false, is_teacher: false, user: @user, company: @company)
+            
             if @info.save
                 redirect_to admin_student_index_path, notice: "Student succesfully created!" 
             else
@@ -29,7 +31,7 @@ class AdminStudentController < ApplicationController
     end
     def update
         @user = User.find(params[:id])
-        if @user.update_attributes(user_params)
+        if !User.exists?(email: params[:email]) && @user.update_attributes(user_params)
             @user.subjects.delete_all
 
             subjects = params[:subject][:subject_ids]
@@ -58,7 +60,7 @@ class AdminStudentController < ApplicationController
     end
 
     private
-.
+
     def user_params
         params.require(:user).permit( :email, :password, :password_confirmation, {:info_attributes => [:is_teacher, :is_admin]}, {:subject => [:id]})
     end
