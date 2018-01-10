@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get '/faq/', to: 'front#faq'
   get '/service/', to: 'front#service'
   get '/material/', to: 'front#material'
+  get '/:company_id/login', to: 'login#user_login', as: 'login'
+  post '/:company_id/login', to: 'login#user_sign_in', as: 'sign_in'
   resources :admin_user, path: 'admin/admin_user'
   resources :admin_teacher, path: 'admin/admin_teacher'
   resources :admin_student, path: 'admin/admin_student'

@@ -14,7 +14,12 @@
                       <%= link_to a.title, announcement_path(a), :class => 'product-title' %>
                     <br>
                     <h6 class="label label-default "><%= a.created_at.to_date %></h6>
-                    <%= link_to a.subject.title, subject_path(a.subject), :class => 'label label-warning' %>
+                    <% if a.subject %>
+                      <%= link_to a.subject.title, subject_path(a.subject), :class => 'label label-warning' %>
+                    <% else %>
+                      <h5>All</h5>
+                    <% end%>
+                    
                     
                   </div>
                 </li>
