@@ -166,7 +166,9 @@ a.article, a.article:hover {
     float: left;
 
 }
-
+.start-right{
+    float: right;
+}
 
 /* ---------------------------------------------------
     MEDIAQUERIES
