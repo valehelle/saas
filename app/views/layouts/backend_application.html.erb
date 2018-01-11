@@ -16,7 +16,7 @@
                   <!-- Sidebar Holder -->
                   <nav id="sidebar" class="mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar " style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position: relative; top: 0px; left: 0px;" dir="ltr">
                       <div class="sidebar-header">
-                          <h3>Eduvoc</h3>
+                            <h3><%= current_user.info.company.title %></h3>
                       </div>
       
                       <ul class="list-unstyled components">
@@ -42,7 +42,7 @@
                                   <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                       <i class="glyphicon glyphicon-menu-hamburger"></i>
                                   </button>
-                                  <h3 class = "narbar-title">Eduvoc</h3>
+                                  <h3 class = "narbar-title"><%= current_user.info.company.title %></h3>
                               </div> 
                           </div>
                       </nav>
