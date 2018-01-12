@@ -47,7 +47,7 @@ class AdminSubjectController < ApplicationController
     end
     def destroy
         @subject = Subject.find(params[:id])
-            if @subject.delete
+            if @subject.destroy
                 flash[:notice] = 'Subject deleted!'
                 redirect_to admin_subject_index_path
                 
