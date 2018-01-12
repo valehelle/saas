@@ -5,5 +5,8 @@ class Subject < ApplicationRecord
     belongs_to :teacher, class_name: "User", foreign_key: "user_id"
     has_many :announcements, dependent: :destroy
     belongs_to :company
-    
+
+    def get_title_code()
+        self[:title] + ' (' + self[:code] + ')'
+    end   
 end

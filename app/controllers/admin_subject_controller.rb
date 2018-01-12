@@ -60,6 +60,6 @@ class AdminSubjectController < ApplicationController
     private
 
     def subject_params
-        params.require(:subject).permit(:title, :teacher_id)
+        params.require(:subject).permit(:title, :teacher_id, :code)
     end
 end

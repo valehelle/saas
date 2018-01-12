@@ -27,4 +27,9 @@ class User < ApplicationRecord
     end
     sanitize_email
   end
+  def get_unsanitize_email(email,company_id)
+    user_id = self[:id]
+    e_split = email.split('@')
+    new_email = e_split.first + '$$%' + company_id.to_s + '@' + e_split.last
+  end
 end

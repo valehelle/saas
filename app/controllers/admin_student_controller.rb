@@ -1,6 +1,7 @@
 class AdminStudentController < ApplicationController
     before_action :authenticate_user!
     layout "admin_application"
+    include AdminUserHelper
     protect_from_forgery
     def index
         @users = User.includes(:info).where(infos: {is_admin: false, is_teacher: false}).paginate(:page => params[:page], :per_page => 10)
@@ -13,12 +14,13 @@ class AdminStudentController < ApplicationController
     end
     def create
         @user = User.new(user_params)
+        @user.email = @user.get_unsanitize_email(params[:user][:email],current_user.info.company.id)
         if @user.save
             @company = current_user.info.company
             @info= Info.new(is_admin: false, is_teacher: false, user: @user, company: @company)
             
             if @info.save
-                redirect_to admin_student_index_path, notice: "Student succesfully created!" 
+                redirect_to admin_student_path(@user), notice: "Student succesfully created!" 
             else
                 render :new
             end
@@ -31,7 +33,15 @@ class AdminStudentController < ApplicationController
     end
     def update
         @user = User.find(params[:id])
-        if !User.exists?(email: params[:email]) && @user.update_attributes(user_params)
+        original_email = @user.email
+        unsanitize_email = @user.get_unsanitize_email(params[:user][:email],current_user.info.company.id)
+
+        if @user.update_attributes(user_params)
+            if !User.exists?(email: unsanitize_email)
+                @user.email = unsanitize_email
+            else
+                @user.email = original_email
+            end
             @user.subjects.delete_all
             
             if !params[:subject].nil?

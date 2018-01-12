@@ -31,7 +31,7 @@ class AdminAnnouncementController < ApplicationController
         @announcement = Announcement.find(params[:id])
 
         if @announcement.update_attributes(announcement_params)
-            redirect_to admin_announcement_path(@user), notice: "Updated Announcement."
+            redirect_to admin_announcement_path(@announcement), notice: "Updated Announcement."
         else
             render :edit
         end

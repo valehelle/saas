@@ -13,7 +13,7 @@
                    <h5><%= @announcement.content %></h5>
                    <h5>Subject:</h5>
                    <% if @announcement.subject %>
-                      <h5><%= @announcement.subject.title %></h5>
+                      <h5><%= link_to @announcement.subject.title, admin_subject_path(@announcement.subject) %></h5>
                     <% else %>
                       <h5>All</h5>
                     <% end%>

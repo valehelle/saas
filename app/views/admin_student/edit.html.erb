@@ -1,19 +1,38 @@
-<%= form_for @user, url: {action: "update"} do |f| %>
-  <fieldset>
-    <ol>
-      <li class="required">
-        <%= f.label :email %>
-        <%= f.email_field :email, size: 40 %>
-      </li>
-        <% Subject.all.each do |subject| %>
-            <label>
-                <%= check_box_tag "subject[subject_ids][]" , subject.id, f.object.subjects.include?(subject) %>
-                <%= subject.title %>
-            </label>
-        <% end %>
-    </ol>
-    <p>
-        <%= f.submit "Create Account" %>
-    </p>
-  </fieldset>
-<% end %>
+<div class = "row">
+    <div class="col-xs-12 col-md-8 col-md-push-2">
+  <div class="box box-success col-xs-12">
+            <div class="box-header with-border">
+              <h3 class="box-title">Update Student</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body col-xs-12">
+              <ul class="products-list product-list-in-box">
+                  <%= form_for @user, url: {action: "update"} do |f| %>
+                    <div class="form-group">
+                        <label for="announcement_title">Email:</label>
+                        <%= f.email_field :email, :class => "form-control", size: 40 %>
+                    </div>
+                    <% Subject.all.each do |subject| %>
+                    <div class = "checkbox">
+                      <label class = "checkbox-label">
+                          <%= check_box_tag "subject[subject_ids][]" , subject.id, f.object.subjects.include?(subject), :class => "checkbox" %>
+                          <%= subject.title %>
+                      </label>
+                    </div>
+                <% end %>
+                  
+                <!-- /.item -->
+              </ul>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+                <%= f.submit "Update",:class => 'btn btn-sm btn-success btn-flat col-xs-12 view-more' %>
+                <% end %>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+        
+          <!-- /.box -->
+        </div>
+  </div>
+  

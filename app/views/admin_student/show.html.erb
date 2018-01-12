@@ -9,9 +9,9 @@
               <ul class="products-list product-list-in-box student-detail-show">
                    <h5>Name:</h5>
                    <h5><%= @user.email %></h5>
-                   <h5>Class:</h5>
+                   <h5>Subject:</h5>
                      <% @user.subjects.each do |s| %>
-                        <h5><%= s.title %></h5>
+                        <h5><%=link_to s.title, admin_subject_path(s) %></h5>
                     <% end %>
                 <!-- /.item -->
               </ul>

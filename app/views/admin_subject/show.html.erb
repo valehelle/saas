@@ -9,6 +9,8 @@
               <ul class="products-list product-list-in-box student-detail-show">
                    <h5>Title:</h5>
                    <h5><%= @subject.title %></h5>
+                   <h5>Code:</h5>
+                   <h5><%= @subject.code %></h5>
                    <h5>Teacher:</h5>
                    <h5><%=link_to @subject.teacher.email, admin_teacher_path(@subject.teacher) %></h5>
                    <h5>Student:</h5>

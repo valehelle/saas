@@ -19,7 +19,7 @@
                         <tbody>
                             <% @subjects.each do |a|%>
                                 <tr>
-                                    <td><%=link_to a.title, admin_subject_path(a), :class => 'admin-link' %></td>
+                                    <td><%=link_to a.get_title_code, admin_subject_path(a), :class => 'admin-link' %></td>
                                     <td>
                                         <%= link_to "Show", admin_subject_path(a), :class => 'btn btn-sm btn-primary btn-flat col-xs-12 col-md-3 view-more'%> 
                                         <%= link_to "Edit", edit_admin_subject_path(a), :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-3 col-md-push-1 view-more'%>

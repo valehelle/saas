@@ -1,6 +1,7 @@
 class AdminTeacherController < ApplicationController
     before_action :authenticate_user!
     layout "admin_application"
+    include AdminUserHelper
     protect_from_forgery
     def index
         @users = User.includes(:info).where(infos: {is_teacher: true})
@@ -14,7 +15,7 @@ class AdminTeacherController < ApplicationController
     def create
         @user = User.new(user_params)
         # For admin to have its own user without conflict with other admin
-        sanitize_email = get_email(@user.email,current_user.info.company.id)
+        sanitize_email = AdminUserHelper.get_email(@user.email,current_user.info.company.id)
         @user.email = sanitize_email
         if @user.save
             @company =  current_user.info.company
@@ -47,8 +48,5 @@ class AdminTeacherController < ApplicationController
     def user_params
         params.require(:user).permit( :email, :password, :password_confirmation)
     end
-    def get_email(email,id)
-        e_split = email.split('@')
-        new_email = e_split.first + '$$%' + id.to_s + '@' + e_split.last
-    end
+
 end
