@@ -1,21 +1,39 @@
-<%= form_for @user, url: {action: "create"} do |f| %>
-  <fieldset>
-    <ol>
-      <li class="required">
-        <%= f.label :email %>
-        <%= f.email_field :email, size: 40 %>
-      </li>
-      <li class="required">
-        <%= f.label :password %>
-        <%= f.password_field :password, size: 40 %>
-      </li>
-      <li class="required">
-        <%= f.label :password_confirmation, "Confirm Password" %>
-        <%= f.password_field :password_confirmation, size: 40 %>
-      </li>
-    </ol>
-    <p>
-        <%= f.submit "Create Account" %>
-    </p>
-  </fieldset>
-<% end %>
+
+
+<div class = "row">
+  <div class="col-xs-12 col-md-8 col-md-push-2">
+<div class="box box-success col-xs-12">
+          <div class="box-header with-border">
+            <h3 class="box-title">Create User</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body col-xs-12">
+            <ul class="products-list product-list-in-box">
+                <%= form_for @user, url: {action: "create"} do |f| %>
+                  <div class="form-group">
+                      <label for="announcement_title">Email:</label>
+                      <%= f.email_field :email, :class => "form-control", size: 40 %>
+                  </div>
+                  <div class="form-group">
+                      <label for="announcement_content">Password:</label>
+                      <%=  f.password_field :password, size: 40, :class => "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <label for="announcement_content">Password Confirmation:</label>
+                    <%=  f.password_field :password_confirmation, size: 40, :class => "form-control" %>
+                </div>
+                
+              <!-- /.item -->
+            </ul>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer text-center">
+              <%= f.submit "Create",:class => 'btn btn-sm btn-success btn-flat col-xs-12 view-more' %>
+              <% end %>
+          </div>
+          <!-- /.box-footer -->
+        </div>
+      
+        <!-- /.box -->
+      </div>
+</div>

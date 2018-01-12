@@ -1,19 +1,35 @@
-<%= form_for @announcement, url: {action: "create"} do |f| %>
-  <fieldset>
-    <ol>
-      <li class="required">
-        <%= f.label :title %>
-        <%= f.text_field :title%>
-      </li>
-      <li class="required">
-        <%= f.label :content %>
-        <%= f.text_field :content %>
-      </li>
-      <%= select_tag 'subject_id', options_for_select(Subject.all.collect{ |u| [u.title, u.id] }), include_blank: "All"%>
 
-    </ol>
-    <p>
-        <%= f.submit "Create Announcement" %>
-    </p>
-  </fieldset>
-<% end %>
+<div class = "row">
+  <div class="col-xs-12 col-md-8 col-md-push-2">
+<div class="box box-success col-xs-12">
+          <div class="box-header with-border">
+            <h3 class="box-title">Create Announcement</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body col-xs-12">
+            <ul class="products-list product-list-in-box">
+                <%= form_for @announcement, url: {action: "create"} do |f| %>
+                  <div class="form-group">
+                      <label for="announcement_title">Title:</label>
+                      <%= f.text_field :title, :class => "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <label for="announcement_title">Content:</label>
+                    <%= f.text_field :content, :class => "form-control" %>
+                </div>
+                  <label for="announcement_title">Subject:</label>
+                  <%= select_tag 'subject_id', options_for_select(Subject.all.collect{ |u| [u.title, u.id] }), {:class => 'form-control',include_blank: "All"}%>
+              <!-- /.item -->
+            </ul>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer text-center">
+              <%= f.submit "Create",:class => 'btn btn-sm btn-success btn-flat col-xs-12 view-more' %>
+              <% end %>
+          </div>
+          <!-- /.box-footer -->
+        </div>
+      
+        <!-- /.box -->
+      </div>
+</div>
