@@ -4,7 +4,7 @@ class AdminTeacherController < ApplicationController
     include AdminUserHelper
     protect_from_forgery
     def index
-        @users = User.includes(:info).where(infos: {is_teacher: true}).paginate(:page => params[:page], :per_page => 10)
+        @users = User.includes(:info).where(infos: {is_teacher: true, company_id: current_user.info.company_id}).paginate(:page => params[:page], :per_page => 10)
     end
     def show
         @user = User.find_by_id(params[:id])

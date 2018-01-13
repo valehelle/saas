@@ -3,7 +3,8 @@ class AdminAnnouncementController < ApplicationController
     layout "admin_application"
     protect_from_forgery
     def index
-        @announcements = Announcement.all.paginate(:page => params[:page], :per_page => 10)
+        @announcements = Announcement.where(company_id: current_user.info.company_id).paginate(:page => params[:page], :per_page => 10)
+        
     end
     def show
         @announcement = Announcement.find_by_id(params[:id])

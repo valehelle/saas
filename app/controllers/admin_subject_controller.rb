@@ -3,7 +3,8 @@ class AdminSubjectController < ApplicationController
     layout "admin_application"
     protect_from_forgery
     def index
-        @subjects = Subject.all.paginate(:page => params[:page], :per_page => 10)
+        @subjects = Subject.where(company_id: current_user.info.company_id).paginate(:page => params[:page], :per_page => 10)
+        
     end
     def show
         @subject = Subject.find_by_id(params[:id])
