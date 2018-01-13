@@ -23,6 +23,7 @@
                           <p>
                             <%= current_user.email %>
                           </p>
+                          <li class = "<%= 'active' if current_page? admin_profile_path %>" ><%= link_to 'Profile', admin_profile_path %></li>
                           <li class = "<%= 'active' if current_page? admin_user_index_path %>" ><%= link_to 'Admin', admin_user_index_path %></li>
                           <li class = "<%= 'active' if current_page? admin_teacher_index_path %>" ><%= link_to 'Teacher', admin_teacher_index_path %></li>
                           <li class = "<%= 'active' if current_page? admin_student_index_path %>" ><%= link_to 'Student', admin_student_index_path %></li>

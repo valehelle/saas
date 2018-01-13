@@ -27,5 +27,8 @@ Rails.application.routes.draw do
   resources :admin_student, path: 'admin/admin_student'
   resources :admin_subject, path: 'admin/admin_subject'
   resources :admin_announcement, path: 'admin/admin_announcement'
+  get 'admin/profile', to: 'admin_profile#show', as: 'admin_profile'
+  get 'admin/profile/edit', to: 'admin_profile#edit', as: 'admin_profile_edit'
+  patch 'admin/profile/edit', to: 'admin_profile#update'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

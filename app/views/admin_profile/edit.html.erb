@@ -1,0 +1,29 @@
+<div class = "row">
+        <div class="col-xs-12 col-md-8 col-md-push-2">
+      <div class="box box-success col-xs-12">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Update Profile</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body col-xs-12">
+                  <ul class="products-list product-list-in-box">
+                      <%= form_for @company, url: {action: "update"} do |f| %>
+                        <div class="form-group">
+                            <label for="announcement_title">Company Name:</label>
+                            <%= f.text_field :title, :class => "form-control" %>
+                        </div>
+                      
+                    <!-- /.item -->
+                  </ul>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <%= f.submit "Update",:class => 'btn btn-sm btn-success btn-flat col-xs-12 view-more' %>
+                    <% end %>
+                </div>
+                <!-- /.box-footer -->
+              </div>
+            
+              <!-- /.box -->
+            </div>
+      </div>

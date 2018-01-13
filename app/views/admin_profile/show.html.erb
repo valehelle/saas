@@ -1,0 +1,29 @@
+<div class = "row">
+    <div class="col-xs-12 col-md-8 col-md-push-2">
+<div class="box box-success col-xs-12">
+        <div class="box-header with-border">
+          <h3 class="box-title">Profile</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body col-xs-12">
+          <ul class="products-list product-list-in-box student-detail-show">
+                <h5>Email:</h5>
+                <h5><%= current_user.email %></h5>
+               <h5>Company Name:</h5>
+               <h5><%= current_user.info.company.title %></h5>
+            <!-- /.item -->
+          </ul>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer text-center">
+            <div class = "col-xs-12">
+            <%= link_to "Edit", admin_profile_edit_path(@company), :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-3 col-md-push-9 view-more'%>
+            </div>
+        </div>
+        <!-- /.box-footer -->
+      </div>
+    
+      <!-- /.box -->
+    </div>
+
+</div>
