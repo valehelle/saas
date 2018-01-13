@@ -1,8 +1,10 @@
 <div class = "row">
         <div class="col-xs-12 col-md-8 col-md-push-2">
+                <%= link_to "Create", new_admin_teacher_path(), :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-3 view-more start-right'%> 
+                
 <div class="box box-success col-xs-12">
             <div class="box-header with-border">
-              <h3 class="box-title">Admin</h3>
+              <h3 class="box-title">Teacher</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body col-xs-12">
@@ -10,17 +12,19 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>email</th>
-                            <th>Is teacher</th>
-                            <th>Is admin</th>
+                            <th>Email</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                             <% @users.each do |a|%>
                                 <tr>
-                                    <td><%= a.email %></td>
-                                    <td><%= a.info.is_teacher %></td>
-                                    <td><%= a.info.is_admin %></td>
+                                    <td><%=link_to a.email, admin_teacher_path(a), :class => 'admin-link' %></td>
+                                    <td>
+                                        <%= link_to "Show", admin_teacher_path(a), :class => 'btn btn-sm btn-primary btn-flat col-xs-12 col-md-3 view-more'%> 
+                                        <%= link_to "Edit", edit_admin_teacher_path(a), :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-3 col-md-push-1 view-more'%>
+                                        <%= link_to "Delete", admin_teacher_path(a),  method: :delete, data: { confirm: 'Are you sure?' },  :class => 'btn btn-sm btn-danger btn-flat col-xs-12 col-md-3 col-md-push-2 view-more'%>
+                                    </td>
                                 </tr>
                             <% end %>
                         </tbody>
@@ -32,6 +36,7 @@
             <!-- /.box-body -->
             <div class="box-footer text-center">
                 <div class = "col-xs-12">
+                    <%= will_paginate @users  %>
                 </div>
             </div>
             <!-- /.box-footer -->
