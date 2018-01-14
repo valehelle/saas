@@ -8,7 +8,7 @@
                     <!-- /.box-header -->
                     <div class="box-body col-xs-12">
                       <ul class="products-list product-list-in-box">
-                        <%= form_for @documents, :html => {:multipart => true} do |f| %>
+                        <%= form_for @document, :html => {:multipart => true} do |f| %>
                             <%= f.file_field :doc, :class => 'upload-document' %>
 
                         <!-- /.item -->
