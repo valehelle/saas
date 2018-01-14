@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eduvoc</title>
+    <title><%= current_user.info.company.title %> </title>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +30,9 @@
       
                       <ul class="list-unstyled CTAs">
                           <li ><%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "download" %></li>
-                      <li ><%= link_to 'Admin', admin_user_index_path, :class => "download" %></li>
+                          <% if current_user.info.is_admin %>
+                            <li ><%= link_to 'Admin', admin_user_index_path, :class => "download" %></li>
+                          <% end %>
                       </ul>
                   </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 0px; top: 0px; display: block; max-height: 601px;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></nav>
       
