@@ -12,6 +12,7 @@ class AdminProfileController < ApplicationController
         if @company.update_attributes(profile_params)
             redirect_to admin_profile_path, notice: "Updated Profile."
         else
+            flash[:alert] = @company.errors.full_messages
             render :edit
         end 
     end

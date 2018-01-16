@@ -11,20 +11,21 @@ class LoginController < ApplicationController
             if @company.save
                 @info = Info.new(is_admin: true, is_teacher: true,company: @company, user: @user)
                 if @info.save
-                    redirect_to root_path, notice: "Admin succesfully created!" 
+                    sign_in(@user, scope: :user)
+                    redirect_to admin_profile_path, notice: "Welcome!" 
                 else
-                    puts @info.errors.full_messages
+                    flash[:error] =  @info.errors.full_messages
                     @user.delete
-                    render :admin_create                
+                    render :admin_register                
                 end
             else
-                puts @company.errors.full_messages
+                flash[:error] =  @user.errors.full_messages
                 @user.delete
-                render :admin_create
+                render :admin_register
             end
         else
             puts @user.errors.full_messages
-            render :admin_create
+            render :admin_register
         end
     end
     def user_login
@@ -39,6 +40,7 @@ class LoginController < ApplicationController
             sign_in(user, scope: :user)
             redirect_to dashboard_path() 
         else
+            flash[:error] =  @user.errors.full_messages
             @user = User.new
             render :user_login
         end

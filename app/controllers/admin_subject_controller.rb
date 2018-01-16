@@ -19,6 +19,7 @@ class AdminSubjectController < ApplicationController
         if @subject.save
             redirect_to admin_subject_index_path, notice: "Subject succesfully created!" 
         else
+            flash[:alert] = @subject.errors.full_messages
             render :new
         end
     end
@@ -39,9 +40,11 @@ class AdminSubjectController < ApplicationController
             if @subject.save
                 redirect_to admin_subject_path(@subject), notice: "Updated Subject."
             else
+                flash[:alert] = @subject.errors.full_messages
                 render :edit
             end
         else
+            flash[:alert] = @subject.errors.full_messages
             render :edit
         end
     end
@@ -52,8 +55,8 @@ class AdminSubjectController < ApplicationController
                 redirect_to admin_subject_index_path
                 
             else
-                flash[:error] = 'Failed to delete this subject dele!'
-                render :destroy
+                flash[:alert] = @subject.errors.full_messages
+                render :index
             end
     end
 

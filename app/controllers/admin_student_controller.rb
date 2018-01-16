@@ -22,9 +22,11 @@ class AdminStudentController < ApplicationController
             if @info.save
                 redirect_to admin_student_path(@user), notice: "Student succesfully created!" 
             else
+                flash[:alert] = @info.errors.full_messages
                 render :new
             end
         else
+            flash[:alert] = @user.errors.full_messages
             render :new
         end
     end
@@ -53,9 +55,11 @@ class AdminStudentController < ApplicationController
             if @user.save
                 redirect_to admin_student_path(@user), notice: "Updated User."
             else
+                flash[:alert] = @user.errors.full_messages
                 render :edit
             end
         else
+            flash[:alert] = @user.errors.full_messages
             render :edit
         end
     end
@@ -66,8 +70,8 @@ class AdminStudentController < ApplicationController
                 redirect_to admin_user_index_path
                 
             else
-                flash[:error] = 'Failed to delete this announcement!'
-                render :destroy
+                flash[:alert] = @user.errors.full_messages
+                render :index
             end
     end
 

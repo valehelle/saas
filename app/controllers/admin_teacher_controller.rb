@@ -25,10 +25,12 @@ class AdminTeacherController < ApplicationController
                 redirect_to admin_teacher_index_path, notice: "Teacher succesfully created!" 
             else
                 @user.email = original_email
+                flash[:alert] = @info.errors.full_messages
                 render :new
             end
         else
             @user.email = original_email
+            flash[:alert] = @user.errors.full_messages
             render :new
         end
     end
@@ -50,9 +52,11 @@ class AdminTeacherController < ApplicationController
                 if @user.save
                     redirect_to admin_teacher_path(@user), notice: "Updated User."
                 else
+                    flash[:alert] = @user.errors.full_messages
                     render :edit
                 end
             else
+                flash[:alert] = @user.errors.full_messages
                 render :edit
             end        
         else
@@ -68,7 +72,7 @@ class AdminTeacherController < ApplicationController
             
         else
             flash[:error] = 'Failed to delete this user!'
-            redirect_to admin_teacher_index_path
+            render :index
         end
     end
 
