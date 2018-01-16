@@ -24,7 +24,7 @@ class LoginController < ApplicationController
                 render :admin_register
             end
         else
-            puts @user.errors.full_messages
+            flash[:error] =  @user.errors.full_messages
             render :admin_register
         end
     end
@@ -35,14 +35,15 @@ class LoginController < ApplicationController
     end
     def user_sign_in
         email = get_email(params[:company_id], params[:user][:email])
-        user = User.find_by_email(email)
-        if !user.nil? && user.valid_password?(params[:user][:password])
-            sign_in(user, scope: :user)
+        @user = User.find_by_email(email)
+        if !@user.nil? && @user.valid_password?(params[:user][:password])
+            sign_in(@user, scope: :user)
             redirect_to dashboard_path() 
         else
-            flash[:error] =  @user.errors.full_messages
+            flash[:error] =  "Incorrect email or password"
             @user = User.new
-            render :user_login
+            
+            render :user_login, layout: "login_application"
         end
     end
     private
