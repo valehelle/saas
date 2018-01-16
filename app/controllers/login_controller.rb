@@ -29,6 +29,8 @@ class LoginController < ApplicationController
     end
     def user_login
         @user = User.new
+        @company = Company.find_by(id: params[:company_id])
+        render layout: "login_application"
     end
     def user_sign_in
         email = get_email(params[:company_id], params[:user][:email])

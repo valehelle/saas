@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eduvoc</title>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+
+  <body>
+              <div class="wrapper">
+                  <!-- Sidebar Holder -->
+                  <!-- Page Content Holder -->
+                  <div id="content" class="">
+      
+                      <div id = "backend-content" class = "container-fluid">
+                        <% if flash[:notice] %>
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                                <%= flash[:notice] %>
+                            </div>
+                        <% end %>
+                        <%= yield %>
+                        
+                      </div>
+                      <div id = "footer">
+                          <h5>Copyright Eduvoc 2018</h5>
+                        </div>
+                  </div>
+              </div>
+              <!-- jQuery CDN -->
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+              <!-- Bootstrap Js CDN -->
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+              
+              <%= javascript_include_tag 'application' %> 
+              <!-- jQuery Custom Scroller CDN -->
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+              <script>
+                  $(document).ready(function () {
+                    $("#sidebar").mCustomScrollbar({
+                        theme: "minimal"
+                    });
+                
+                    $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar, #content').toggleClass('active');
+                        $('#backend-content').toggleClass('content-active');
+                        $('.collapse.in').toggleClass('in');
+                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                    });
+                });
+              </script>
+      </body>
+</html>
