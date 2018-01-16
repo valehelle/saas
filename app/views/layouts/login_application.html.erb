@@ -26,7 +26,14 @@
                             </div>
                         <% end %>
                         <%= yield %>
-                        
+                        <% flash.each do |key, value| %>
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                            <%= value %>
+                        </div>
+
+                    <% end %>
                       </div>
                       <div id = "footer">
                           <h5>Copyright Eduvoc 2018</h5>
