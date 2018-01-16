@@ -22,6 +22,7 @@ class AdminUserController < ApplicationController
         if @user.save
             redirect_to admin_user_index_path, notice: "Admin succesfully created!" 
         else
+            flash[:alert] = @user.errors.full_messages
             render :new
         end
     end
