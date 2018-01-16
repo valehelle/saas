@@ -15,6 +15,7 @@ class AdminUserController < ApplicationController
     end
     def create
         @user = User.new(user_params)
+        @user.build_info
         @user.info.is_admin = true
         @user.info.is_teacher = true
         @user.info.company = current_user.info.company
