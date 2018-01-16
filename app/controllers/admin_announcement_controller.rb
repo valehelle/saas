@@ -21,7 +21,7 @@ class AdminAnnouncementController < ApplicationController
         if @announcement.save
             redirect_to admin_announcement_index_path, notice: "Announcement succesfully created!" 
         else
-            puts @announcement.errors.full_messages
+            flash[:alert] = @announcement.errors.full_messages
             render :new
         end
     end
@@ -34,6 +34,7 @@ class AdminAnnouncementController < ApplicationController
         if @announcement.update_attributes(announcement_params)
             redirect_to admin_announcement_path(@announcement), notice: "Updated Announcement."
         else
+            flash[:alert] = @announcement.errors.full_messages
             render :edit
         end
     end
@@ -44,8 +45,8 @@ class AdminAnnouncementController < ApplicationController
                 redirect_to admin_announcement_index_path
                 
             else
-                flash[:error] = 'Failed to delete this announcement!'
-                render :destroy
+                flash[:alert] = @announcement.errors.full_messages
+                render :index
             end
     end
 

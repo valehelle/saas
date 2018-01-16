@@ -34,6 +34,7 @@ class AdminUserController < ApplicationController
         if @user.update_attributes(user_params)
             redirect_to admin_user_path(@user), notice: "Updated Admin."
         else
+            flash[:alert] = @user.errors.full_messages
             render :edit
         end
     end
@@ -44,8 +45,8 @@ class AdminUserController < ApplicationController
             redirect_to admin_user_index_path
             
         else
-            flash[:error] = 'Failed to delete this user!'
-            redirect_to admin_user_index_path
+            flash[:alert] = @user.errors.full_messages
+            render :index
         end
     end
 

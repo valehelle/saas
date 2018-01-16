@@ -51,14 +51,13 @@
                                 <%= flash[:notice] %>
                             </div>
                         <% end %>
-                        <% flash.each do |key, value| %>
+                        <% if flash[:alert] %>
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                            <%= value %>
+                            <%= flash[:alert] %>
                         </div>
-
-                    <% end %>
+                        <% end %>
                         <%= yield %>
                         
                       </div>
