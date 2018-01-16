@@ -18,3 +18,12 @@
         text-align: center;
     }
     
+.navbar {
+
+    border-radius: 0px;
+
+}
+
+#front-content{
+    margin-top:50px;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eduvoc</title>
+    <title>SAAS</title>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,60 +12,30 @@
   </head>
 
   <body>
-              <div class="wrapper">
-                  <!-- Sidebar Holder -->
-                  <nav id="sidebar" class="mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar " style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position: relative; top: 0px; left: 0px;" dir="ltr">
-                      <div class="sidebar-header">
-                          <h3>Eduvoc</h3>
-                      </div>
-      
-                      <ul class="list-unstyled components">
-                          <li class = "<%= 'active' if current_page? dashboard_path %>" ><%= link_to 'Dashboard', dashboard_path %></li>
-                          <li class = "<%= 'active' if current_page? subjects_path %>" ><%= link_to 'Subject', subjects_path %></li>
-                          <li class = "<%= 'active' if current_page? announcements_path %>" ><%= link_to 'Announcement', announcements_path %></li>
-                      </ul>
-      
-                      <ul class="list-unstyled CTAs">
-                          <li ><%= link_to 'Log in', new_user_session_path, method: :delete, :class => "download" %></li>
-                      </ul>
-                  </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 0px; top: 0px; display: block; max-height: 601px;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></nav>
-      
-                  <!-- Page Content Holder -->
-                  <div id="content" class="">
-      
-                      <nav class="navbar-backend navbar-default col-xs-12">
-                          <div class="container-fluid">
-                              <div class="navbar-header col-xs-12">
-                                  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                      <i class="glyphicon glyphicon-menu-hamburger"></i>
-                                  </button>
-                                  <h3 class = "narbar-title">Eduvoc</h3>
-                              </div> 
-                          </div>
-                      </nav>
-                      <div id = "backend-content" class = "container-fluid">
-                        <% if flash[:notice] %>
-                            <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                                <%= flash[:notice] %>
-                            </div>
-                        <% end %>
-                        <% if flash[:alert] %>
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                            <%= flash[:alert] %>
-                        </div>
-                        <% end %>
-                        <%= yield %>
-                        
-                      </div>
-                      <div id = "footer">
-                          <h5>Copyright Eduvoc 2018</h5>
-                        </div>
+        <nav class="navbar navbar-fixed-top navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">SAAS</a>
                   </div>
-              </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </nav> 
+    <div id = "front-content">
+    <%= yield %>
+    </div>                    
+    <div id = "footer">
+        <h5>Copyright Eduvoc 2018</h5>
+    </div>
               <!-- jQuery CDN -->
               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
               <!-- Bootstrap Js CDN -->
