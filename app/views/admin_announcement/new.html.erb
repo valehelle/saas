@@ -18,7 +18,7 @@
                     <%= f.text_field :content, :class => "form-control" %>
                 </div>
                   <label for="announcement_title">Subject:</label>
-                  <%= select_tag 'subject_id', options_for_select(Subject.all.collect{ |u| [u.title, u.id] }), {:class => 'form-control',include_blank: "All"}%>
+                  <%= select_tag 'subject_id', options_for_select(Subject.where(company_id: current_user.info.company_id).collect{ |u| [u.title, u.id] }), {:class => 'form-control',include_blank: "All"}%>
               <!-- /.item -->
             </ul>
           </div>

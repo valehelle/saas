@@ -17,7 +17,7 @@
                     <%= f.text_field :code, :class => "form-control" %>
                 </div>
                   <label for="announcement_title">Teacher:</label>
-                  <%= select_tag 'teacher_id', options_for_select(User.includes(:info).where(infos: {is_teacher: true}).collect{ |u| [u.email, u.id] }),{:class => 'form-control'}%>
+                  <%= select_tag 'teacher_id', options_for_select(User.includes(:info).where(infos: {is_teacher: true,company_id: current_user.info.company_id}).collect{ |u| [u.email, u.id] }),{:class => 'form-control'}%>
                 
               <!-- /.item -->
             </ul>

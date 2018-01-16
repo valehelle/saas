@@ -19,7 +19,6 @@ class AdminSubjectController < ApplicationController
         if @subject.save
             redirect_to admin_subject_index_path, notice: "Subject succesfully created!" 
         else
-            puts @subject.errors.full_messages
             render :new
         end
     end

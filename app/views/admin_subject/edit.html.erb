@@ -17,8 +17,10 @@
                     <%= f.text_field :code, :class => "form-control" %>
                 </div>
                   <label for="announcement_title">Teacher:</label>
-                  <%= select_tag 'teacher_id', options_for_select(User.includes(:info).where(infos: {is_teacher: true}).collect{ |u| [u.email, u.id] }),{:class => 'form-control'}%>
-                  <% User.includes(:info).where(infos: {is_admin: false, is_teacher: false}).each do |user| %>
+                  <%= select_tag 'teacher_id', options_for_select(User.includes(:info).where(infos: {is_teacher: true,company_id: current_user.info.company_id}).collect{ |u| [u.email, u.id] }),{:class => 'form-control'}%>
+                  <br>
+                  <label for="announcement_title">Student:</label>
+                  <% User.includes(:info).where(infos: {is_admin: false, is_teacher: false,company_id: current_user.info.company_id}).each do |user| %>
                   <div class = "checkbox col-xs-12">
                     <label class = "checkbox-label">
                       <%= check_box_tag "user[user_ids][]" , user.id, f.object.students.include?(user), :class => "checkbox" %>
