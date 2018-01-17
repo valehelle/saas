@@ -14,17 +14,17 @@ class LoginController < ApplicationController
                     sign_in(@user, scope: :user)
                     redirect_to admin_profile_path, notice: "Welcome!" 
                 else
-                    flash[:error] =  @info.errors.full_messages
+                    flash[:alert] = @user.errors.full_messages
                     @user.delete
                     render :admin_register                
                 end
             else
-                flash[:error] =  @user.errors.full_messages
+                flash[:alert] = @user.errors.full_messages
                 @user.delete
                 render :admin_register
             end
         else
-            flash[:error] =  @user.errors.full_messages
+            flash[:alert] = @user.errors.full_messages
             render :admin_register
         end
     end
@@ -52,6 +52,6 @@ class LoginController < ApplicationController
         new_email = s_email.first + '$$%' + company_id.to_s + '@' + s_email.last
     end
     def user_params
-        params.require(:user).permit( :email, :password, :password_confirmation, {:info_attributes => [:is_teacher, :is_admin]}, {:subject => [:id]})
+        params.require(:user).permit( :email, :password, :password_confirmation, {:info_attributes => [:is_teacher, :is_admin]})
     end
 end

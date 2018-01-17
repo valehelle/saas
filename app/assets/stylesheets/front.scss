@@ -2,12 +2,30 @@
     margin-top:20px;
     
 }
+.icon-bar{
+    background-color: white;
+}
+.nav > li > a:focus, .nav > li > a:hover{
+        text-decoration: none;
+    background-color: white;
+    color: #616771;
+
+}
 .education-wrapper{
     background: #ffab4a;
     background: -webkit-linear-gradient(left, #f06e47, #ffab4a);
     background: -moz-linear-gradient(left, #f06e47, #ffab4a);
     background: -o-linear-gradient(left, #f06e47, #ffab4a);
     background: linear-gradient(to right, #f06e47, #ffab4a);
+    padding-right: 0;
+    color:white;
+}
+.blue-hue{
+    background: #4383cb;
+    background: -webkit-linear-gradient(left, #279bce, #4383cb);
+    background: -moz-linear-gradient(left, #279bce, #4383cb);
+    background: -o-linear-gradient(left, #279bce, #4383cb);
+    background: linear-gradient(to right, #279bce, #4383cb);
     padding-right: 0;
     color:white;
 }
@@ -51,6 +69,7 @@
 }
 #main-wrapper{
     text-align: center;
+    min-height: 100vh;
 }
 
 .edu-title-img {
@@ -68,5 +87,19 @@
     margin-top: 10px;
 }
 .title-large-wrapper{
-    margin-top: 10%
+
+    margin-top: 15vh;
+    
+}
+.sub-header-large-wrapper{
+    margin-top: 10%;
+}
+.sub-register-large-wrapper{
+    margin-top: 5%;
+}
+.title-wrapper{
+    min-height:100vh;
+}
+#footer{
+    text-align:center;
 }

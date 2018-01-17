@@ -12,29 +12,40 @@
   </head>
 
   <body>
-        <nav class="navbar navbar-fixed-top navbar-inverse">
-                <div class="container-fluid">
+        <nav class="navbar navbar-fixed-top blue-hue">
+                <div class="container">
                   <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">SAAS</a>
+                    <%= link_to "SAAS", root_path, :class => 'navbar-brand'%>  
+
                   </div>
                   <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <ul class="nav navbar-nav navbar-right ">
+
+                      <li>
+                        <%= link_to user_register_path do %>
+                            <span class="glyphicon glyphicon-user"></span> Register
+                        <% end %>
+                      <li>
+                        <%= link_to new_user_session_path do %>
+                            <span class="glyphicon glyphicon-log-in"></span> Login
+                        <% end %>
+                        
+                        </li>
                     </ul>
                   </div>
                 </div>
               </nav> 
     <div id = "front-content">
+
     <%= yield %>
     </div>                    
     <div id = "footer">
-        <h5>Copyright Eduvoc 2018</h5>
+        <h5>Copyright SAAS 2018</h5>
     </div>
               <!-- jQuery CDN -->
               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

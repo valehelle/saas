@@ -1,3 +1,23 @@
 // Place all the styles related to the Login controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#register-wrapper{
+    margin-top:15vh;
+}
+.admin-register-field{
+    margin-top:5vh;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+    padding: 40px 40px;
+}
