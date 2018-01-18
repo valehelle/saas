@@ -30,8 +30,13 @@ class LoginController < ApplicationController
     end
     def user_login
         @user = User.new
-        @company = Company.find_by(id: params[:company_id])
-        render layout: "login_application"
+        @company = 
+        if Company.where(id: params[:company_id]).exists?
+            @company = Company.find_by(id: params[:company_id])
+            render layout: "login_application"
+        else
+            redirect_to root_path
+        end
     end
     def user_sign_in
         email = get_email(params[:company_id], params[:user][:email])
