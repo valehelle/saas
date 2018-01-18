@@ -19,7 +19,7 @@ class AnnouncementController < ApplicationController
           flash[:notice] = 'Announcement created!'
           redirect_to dashboard_path
         else
-          flash[:error] = 'Failed to create announcement!'
+          flash[:alert] = 'Failed to create announcement!'
           render :new
         end
     end
@@ -30,7 +30,7 @@ class AnnouncementController < ApplicationController
             redirect_to announcements_path
             
         else
-            flash[:error] = 'Failed to delete this announcement!'
+            flash[:alert] = 'Failed to delete this announcement!'
             render :destroy
         end
     end

@@ -14,7 +14,7 @@ class DocumentController < ApplicationController
           flash[:notice] = 'Document uploaded!'
           redirect_to :subject
         else
-          flash[:error] = 'Failed to upload document!'
+          flash[:alert] = 'Failed to upload document!'
           render :new
         end
     end

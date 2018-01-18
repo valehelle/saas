@@ -40,9 +40,9 @@ class LoginController < ApplicationController
             sign_in(@user, scope: :user)
             redirect_to dashboard_path() 
         else
-            flash[:error] =  "Incorrect email or password"
+            flash[:alert] =  "Incorrect email or password"
             @user = User.new
-            
+            @company = Company.find_by(id: params[:company_id])
             render :user_login, layout: "login_application"
         end
     end

@@ -71,7 +71,7 @@ class AdminTeacherController < ApplicationController
             redirect_to admin_teacher_index_path
             
         else
-            flash[:error] = 'Failed to delete this user!'
+            flash[:alert] = 'Failed to delete this user!'
             render :index
         end
     end
