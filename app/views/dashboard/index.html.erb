@@ -21,7 +21,7 @@
                         <h5 class = "label label-warning"><%= a.subject.title %></h5>
                       <% end%>
                     <% else %>
-                      <h5>All</h5>
+                    <h5 class = "label label-warning">All</h5>
                     <% end%>
                     
                     
@@ -38,7 +38,7 @@
                   <% if current_user.info.is_teacher %>
                       <%= link_to 'View all', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 col-md-5 view-more' %>
                       <%= link_to 'Create Announcement', announcements_new_path, :class => 'btn btn-sm btn-success btn-flat col-xs-12 col-md-5 col-md-push-2 hidden-xs hidden-sm view-more' %>
-                  <% else %>
+                  <% else %> 
                   <%= link_to 'View all', announcements_path, :class => 'btn btn-sm btn-info btn-flat col-xs-12 col-md-6 col-md-push-3 view-more' %>
                   <% end %>
                 </div>
