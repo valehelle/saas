@@ -8,5 +8,6 @@ class DashboardController < ApplicationController
         else
             @subjects = current_user.subjects
         end
+        @dashboard_title = 'Dashboard'
     end
 end

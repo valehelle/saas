@@ -4,12 +4,14 @@ class DocumentController < ApplicationController
     protect_from_forgery
     def new
         @document = Subject.find(params[:id]).documents.new
+        @dashboard_title = 'Documents'
     end
     def create
         @subject = Subject.find(params[:id])
         @document = @subject.documents.new
         @document.doc = params['document']['doc']
         @document.company = current_user.info.company
+    
         if @document.save
           flash[:notice] = 'Document uploaded!'
           redirect_to :subject
