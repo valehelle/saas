@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'front#index'
+  match '/login', to: 'login#user_login', constraints: { subdomain: /.+/ }, via: [:get], as: 'login'
+  match '/login', to: 'login#user_sign_in', constraints: { subdomain: /.+/ }, via: [:post], as: 'sign_in'
   get '/subjects/:id/announcements/', to: 'subject#announcements', as: 'subject_announcements'
   get '/subjects/:id/documents/new', to: 'document#new', as: 'new_documents'
   post '/subjects/:id/documents/', to: 'document#create', as: 'documents'
@@ -20,8 +21,6 @@ Rails.application.routes.draw do
   get '/faq/', to: 'front#faq'
   get '/service/', to: 'front#service'
   get '/material/', to: 'front#material'
-  get '/:company_id/login', to: 'login#user_login', as: 'login'
-  post '/:company_id/login', to: 'login#user_sign_in', as: 'sign_in'
   get '/users/register', to: 'login#admin_register', as: 'user_register'
   post '/users/register', to: 'login#admin_create'
   resources :admin_user, path: 'admin/admin_user'
@@ -32,5 +31,6 @@ Rails.application.routes.draw do
   get 'admin/profile', to: 'admin_profile#show', as: 'admin_profile'
   get 'admin/profile/edit', to: 'admin_profile#edit', as: 'admin_profile_edit'
   patch 'admin/profile/edit', to: 'admin_profile#update'
+  root to: 'front#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

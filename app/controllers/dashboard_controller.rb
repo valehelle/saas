@@ -8,6 +8,12 @@ class DashboardController < ApplicationController
         else
             @subjects = current_user.subjects
         end
+        
+        if current_user.info.company_id.to_s != request.subdomain.to_s
+            redirect_to login_url(:domain => request.domain)
+        else
+            puts 'same!'
+        end
         @dashboard_title = 'Dashboard'
     end
 end

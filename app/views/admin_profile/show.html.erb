@@ -12,7 +12,7 @@
                <h5>Company Name:</h5>
                <h5><%= current_user.info.company.title %></h5>
                 <h5>Login Path:</h5>
-               <h5><%= link_to request.base_url + login_path(current_user.info.company) ,login_path(current_user.info.company)  %></h5>
+               <h5><%= link_to current_user.info.company.id.to_s  + '.' + request.domain + login_path() ,login_url(:domain => current_user.info.company.id.to_s + '.' + request.domain)  %></h5>
             <!-- /.item -->
           </ul>
         </div>

@@ -33,7 +33,7 @@
       
                       <ul class="list-unstyled CTAs">
                           <li ><%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "download" %></li>
-                          <li ><%= link_to 'Dashboard', dashboard_path, :class => "download" %></li>
+                          <li ><%= link_to 'Dashboard', dashboard_url(:subdomain => current_user.info.company.id.to_s), :class => "download" %></li>
                       </ul>
                   </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 0px; top: 0px; display: block; max-height: 601px;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></nav>
       

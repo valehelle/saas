@@ -30,16 +30,15 @@ class LoginController < ApplicationController
     end
     def user_login
         @user = User.new
-        @company = 
-        if Company.where(id: params[:company_id]).exists?
-            @company = Company.find_by(id: params[:company_id])
+        if Company.where(id: request.subdomain.to_s).exists?
+            @company = Company.find_by(id: request.subdomain.to_s)
             render layout: "login_application"
         else
             redirect_to root_path
         end
     end
     def user_sign_in
-        email = get_email(params[:company_id], params[:user][:email])
+        email = get_email(request.subdomain.to_s, params[:user][:email])
         @user = User.find_by_email(email)
         if !@user.nil? && @user.valid_password?(params[:user][:password])
             sign_in(@user, scope: :user)
