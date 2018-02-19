@@ -18,10 +18,12 @@ class AnnouncementController < ApplicationController
     def create
         @announcement = Announcement.new(announcement_params)
         @announcement.subject = Subject.find(params[:subject][:subject_id])
+        @announcement.company_id = current_user.info.company.id
         if @announcement.save
           flash[:notice] = 'Announcement created!'
           redirect_to dashboard_path
         else
+            puts @announcement.errors.messages
           flash[:alert] = 'Failed to create announcement!'
           render :new
         end
