@@ -28,7 +28,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer text-center">
-              <% if current_user.info.is_teacher && @announcement.subject.user_id == current_user.id %>
+              <% if current_user.info.is_teacher && !@announcement.subject.nil? && @announcement.subject.user_id == current_user.id %>
                 <div class = "col-xs-12">
                 <%= link_to "Delete", delete_announcement_path(@announcement),  method: :delete, data: {confirm: "Are you sure you want to delete this announcement?"}, :class => 'btn btn-sm btn-danger btn-flat col-xs-12 col-md-4 col-md-push-4 view-more' %>
                 </div>
