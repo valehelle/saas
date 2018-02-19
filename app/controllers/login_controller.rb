@@ -49,13 +49,15 @@ class LoginController < ApplicationController
             redirect_to dashboard_path() 
         else
             @user = User.find_by_email(params[:user][:email])
-            if !@user.nil? && @user.valid_password?(params[:user][:password])
+            puts @user.info.company.id
+            puts request.domain.to_s
+            if !@user.nil? && @user.valid_password?(params[:user][:password]) && @user.info.company.id.to_s == request.subdomain.to_s
                 sign_in(@user, scope: :user)
                 redirect_to dashboard_path()         
             else
                 flash[:alert] =  "Incorrect email or password"
                 @user = User.new
-                @company = Company.find_by(id: params[:company_id])
+                @company = Company.find_by(id: request.subdomain)
                 render :user_login, layout: "login_application"
             end
         end
