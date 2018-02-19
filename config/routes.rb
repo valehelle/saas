@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
   match '/login', to: 'login#user_login', constraints: { subdomain: /.+/ }, via: [:get], as: 'login'
   match '/login', to: 'login#user_sign_in', constraints: { subdomain: /.+/ }, via: [:post], as: 'sign_in'
+
+  match '/dashboard', to: 'dashboard#index', constraints: { subdomain: /.+/ }, via: [:get]
+  
   get '/subjects/:id/announcements/', to: 'subject#announcements', as: 'subject_announcements'
   get '/subjects/:id/documents/new', to: 'document#new', as: 'new_documents'
   post '/subjects/:id/documents/', to: 'document#create', as: 'documents'
   get '/subjects/:id/documents/:doc_id/download', to: 'document#download_file', as: 'download_document'
   delete '/subjects/:id/documents/:doc_id/download', to: 'document#delete_file', as: 'delete_document'
-  get '/dashboard/', to: 'dashboard#index'
+  
   get '/announcements', to: 'announcement#index'
   get '/announcements/new', to: 'announcement#new'
   get '/announcements/:id', to: 'announcement#show', as: 'announcement'
