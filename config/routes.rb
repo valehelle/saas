@@ -2,22 +2,24 @@ Rails.application.routes.draw do
   devise_for :users
   match '/login', to: 'login#user_login', constraints: { subdomain: /.+/ }, via: [:get], as: 'login'
   match '/login', to: 'login#user_sign_in', constraints: { subdomain: /.+/ }, via: [:post], as: 'sign_in'
-
+  match '/logout', to: 'login#user_sign_out', constraints: { subdomain: /.+/ }, via: [:delete], as: 'logout'
+  
   match '/dashboard', to: 'dashboard#index', constraints: { subdomain: /.+/ }, via: [:get]
-  
-  get '/subjects/:id/announcements/', to: 'subject#announcements', as: 'subject_announcements'
-  get '/subjects/:id/documents/new', to: 'document#new', as: 'new_documents'
-  post '/subjects/:id/documents/', to: 'document#create', as: 'documents'
-  get '/subjects/:id/documents/:doc_id/download', to: 'document#download_file', as: 'download_document'
-  delete '/subjects/:id/documents/:doc_id/download', to: 'document#delete_file', as: 'delete_document'
-  
-  get '/announcements', to: 'announcement#index'
-  get '/announcements/new', to: 'announcement#new'
-  get '/announcements/:id', to: 'announcement#show', as: 'announcement'
-  post '/announcements/', to: 'announcement#create'
-  delete '/announcements/:id', to: 'announcement#destroy', as: 'delete_announcement'
-  get '/subjects/', to: 'subject#index'
-  get '/subjects/:id', to: 'subject#show', as: 'subject'
+  match '/subjects/:id/announcements/', to: 'subject#announcements', constraints: { subdomain: /.+/ }, via: [:get], as: 'subject_announcements'
+  match '/subjects/:id/documents/new', to: 'document#new', constraints: { subdomain: /.+/ }, via: [:get], as: 'new_documents'
+  match '/subjects/:id/documents/', to: 'document#create', constraints: { subdomain: /.+/ }, via: [:post], as: 'documents'
+
+  match '/subjects/:id/documents/:doc_id/download', to: 'document#download_file', constraints: { subdomain: /.+/ }, via: [:get], as: 'download_document'
+  match '/subjects/:id/documents/:doc_id/download', to: 'document#delete_file', constraints: { subdomain: /.+/ }, via: [:delete], as: 'delete_document'
+  match '/announcements', to: 'announcement#index', constraints: { subdomain: /.+/ }, via: [:get]
+  match '/announcements/new', to: 'announcement#new', constraints: { subdomain: /.+/ }, via: [:get]
+  match '/announcements/:id', to: 'announcement#show', constraints: { subdomain: /.+/ }, via: [:get], as: 'announcement'
+  match '/announcements/', to: 'announcement#create', constraints: { subdomain: /.+/ }, via: [:post]
+  match '/announcements/:id', to: 'announcement#destroy', constraints: { subdomain: /.+/ }, via: [:delete], as: 'delete_announcement'
+  match '/subjects/', to: 'subject#index', constraints: { subdomain: /.+/ }, via: [:get]
+  match '/subjects/:id', to: 'subject#show', constraints: { subdomain: /.+/ }, via: [:get], as: 'subject'
+
+
   get '/about/', to: 'front#about'
   get '/gallery/', to: 'front#gallery'
   get '/contact/', to: 'front#contact'

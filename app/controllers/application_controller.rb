@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
       admin_root_path
     end
   end
+  private
+  def auth_user
+      redirect_to login_url(:domain => request.domain) unless user_signed_in?
+  end
 end

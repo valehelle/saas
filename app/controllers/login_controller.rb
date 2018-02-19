@@ -37,6 +37,10 @@ class LoginController < ApplicationController
             redirect_to root_path
         end
     end
+    def user_sign_out
+        sign_out current_user
+        redirect_to login_url(:domain => request.domain)
+    end
     def user_sign_in
         email = get_email(request.subdomain.to_s, params[:user][:email])
         @user = User.find_by_email(email)
@@ -44,10 +48,16 @@ class LoginController < ApplicationController
             sign_in(@user, scope: :user)
             redirect_to dashboard_path() 
         else
-            flash[:alert] =  "Incorrect email or password"
-            @user = User.new
-            @company = Company.find_by(id: params[:company_id])
-            render :user_login, layout: "login_application"
+            @user = User.find_by_email(params[:user][:email])
+            if !@user.nil? && @user.valid_password?(params[:user][:password])
+                sign_in(@user, scope: :user)
+                redirect_to dashboard_path()         
+            else
+                flash[:alert] =  "Incorrect email or password"
+                @user = User.new
+                @company = Company.find_by(id: params[:company_id])
+                render :user_login, layout: "login_application"
+            end
         end
     end
     private

@@ -1,5 +1,5 @@
 class SubjectController < ApplicationController
-    before_action :authenticate_user!
+    before_action :auth_user
     layout "backend_application"
     protect_from_forgery
     def index
