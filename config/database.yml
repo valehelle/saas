@@ -11,7 +11,14 @@ default: &default
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8mb4
+  collation: utf8mb4_polish_ci
+  database: saas
+  pool: 5
+  username: root
+  password: local123
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
