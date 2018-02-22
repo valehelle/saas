@@ -24,8 +24,6 @@ Rails.application.routes.draw do
   get '/gallery/', to: 'front#gallery'
   get '/contact/', to: 'front#contact'
   get '/faq/', to: 'front#faq'
-  get '/service/', to: 'front#service'
-  get '/material/', to: 'front#material'
   get '/users/register', to: 'login#admin_register', as: 'user_register'
   post '/users/register', to: 'login#admin_create'
   resources :admin_user, path: 'admin/admin_user'
