@@ -20,6 +20,11 @@ class AnnouncementController < ApplicationController
         @announcement.subject = Subject.find(params[:subject][:subject_id])
         @announcement.company_id = current_user.info.company.id
         if @announcement.save
+            @students = @announcement.subject.students
+            @students.each do |s|
+                UserMailer.announcement_email(s.email,@announcement.title,@announcement.content).deliver_now
+            end
+           
           flash[:notice] = 'Announcement created!'
           redirect_to dashboard_path
         else

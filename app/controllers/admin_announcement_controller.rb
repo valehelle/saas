@@ -19,6 +19,10 @@ class AdminAnnouncementController < ApplicationController
         end
         @announcement.company = current_user.info.company
         if @announcement.save
+            @students = @announcement.subject.students
+            @students.each do |s|
+                UserMailer.announcement_email(s.email,@announcement.title,@announcement.content).deliver_now
+            end
             redirect_to admin_announcement_index_path, notice: "Announcement succesfully created!" 
         else
             flash[:alert] = @announcement.errors.full_messages

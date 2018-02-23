@@ -10,11 +10,7 @@
 
                 <li class="item col-xs-12">
                   <div class="product-info">
-                    <% if !@announcement.title.nil? %>
                       <h6><%= @announcement.title %></h6>
-                    <% else %>
-                      <h5>All</h5>
-                    <% end%>
                       <h6><%= @announcement.content %></h6>
                     <br>
                     <h6 class="label label-default "><%= @announcement.created_at.to_date %></h6>

@@ -1,6 +1,7 @@
 class UserMailer < ApplicationMailer
 
-    def announcement_email(text)
-        mail(to: "hazmiirfan92@gmail.com", subject: text)
+    def announcement_email(email,title,content)
+        @content = content
+        mail(to: email, subject: title)
       end
 end
