@@ -45,7 +45,7 @@
     <%= yield %>
     </div>                    
     <div id = "footer">
-        <h5>Copyright Doffic 2018</h5>
+        <h5>Copyright Doffic 2018  |  doffic287@gmail.com</h5>
     </div>
               <!-- jQuery CDN -->
               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -68,6 +68,24 @@
                         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                     });
                 });
+                
               </script>
+              <!-- WhatsHelp.io widget -->
+<script type="text/javascript">
+  (function () {
+      var options = {
+          email: "doffic287@gmail.com", // Email
+          company_logo_url: "//static.whatshelp.io/img/flag.png", // URL of company logo (png, jpg, gif)
+          greeting_message: "Hello, how may we help you? Just send us a message now to get assistance.", // Text of greeting message
+          call_to_action: "Message us", // Call to action
+          position: "right", // Position may be 'right' or 'left'
+      };
+      var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+  })();
+</script>
+<!-- /WhatsHelp.io widget -->
       </body>
 </html>
