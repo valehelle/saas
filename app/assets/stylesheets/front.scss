@@ -27,6 +27,7 @@
     background: -o-linear-gradient(left, #279bce, #4383cb);
     background: linear-gradient(to right, #279bce, #4383cb);
     padding-right: 0;
+    padding-left: 0;
     color:white;
 }
 .vocational-wrapper{
@@ -92,7 +93,8 @@
     
 }
 .sub-header-large-wrapper{
-    margin-top: 5%;
+    padding-left:0;
+    padding-right:0;
 }
 .sub-register-large-wrapper{
     margin-top: 5%;
@@ -102,4 +104,74 @@
 }
 #footer{
     text-align:center;
+}
+.pricing-section-free .pricing-section-top {
+    background: #298fca;
+}
+.pricing-section-bc .pricing-section-top {
+    background: #42548e;
+}
+.pricing-section-enterprise .pricing-section-top {
+    background: #36405f;
+}
+.pricing-section-top {
+    color: white;
+    padding: 1em;
+    border-radius: 6px 6px 0 0;
+}	
+.pricing-section-item-description {
+    opacity: .5;
+    color: #fff;
+}
+.pricing-section-quiet {
+    opacity: .5;
+    margin-bottom: 1em;
+    color: #fff;
+}
+.pricing-section-item {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 .5em;
+    vertical-align: top;
+}
+.pricing-section {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    max-width: 450px;
+    vertical-align: top;
+    width: 100%;
+}
+.u-center-text {
+    text-align: center;
+}
+.pricing-section-price {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 auto;
+    display: block;
+}
+.pricing-section-bottom {
+    text-align: left;
+    border: 1px solid #d6dadc;
+    border-radius: 0 0 6px 6px;
+    border-top: none;
+    margin-bottom: 2em;
+}
+.pricing-section-list {
+    margin-top: 0;
+    padding: 1em 1em 0 2.25em;
+}
+.pricing-section-list span {
+    color: #8c8c8c;
+    left: 2px;
+    position: relative;
+}
+.pricing-section-list li {
+    padding: .5em 0;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
 }

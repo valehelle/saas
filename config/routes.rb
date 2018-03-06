@@ -20,10 +20,7 @@ Rails.application.routes.draw do
   match '/subjects/:id', to: 'subject#show', constraints: { subdomain: /.+/ }, via: [:get], as: 'subject'
 
 
-  get '/about/', to: 'front#about'
-  get '/gallery/', to: 'front#gallery'
-  get '/contact/', to: 'front#contact'
-  get '/faq/', to: 'front#faq'
+  get '/pricing/', to: 'front#pricing'
   get '/users/register', to: 'login#admin_register', as: 'user_register'
   post '/users/register', to: 'login#admin_create'
   resources :admin_user, path: 'admin/admin_user'

@@ -4,7 +4,7 @@ class FrontController < ApplicationController
         
     end
     
-    def about
+    def pricing
     
     end
 
